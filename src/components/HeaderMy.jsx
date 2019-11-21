@@ -7,7 +7,7 @@ const {Header} = Layout;
 
 export class HeaderMy extends Component {
 
-    handleClick = e => {
+    handleSelect = e => {
         console.log('click', e);
 
     };
@@ -17,15 +17,15 @@ export class HeaderMy extends Component {
             <Header>
                 <div className="logo"/>
                 <Menu
-                    onClick={this.handleClick}
+                    onSelect={this.handleSelect}
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     style={{ lineHeight: '64px' }}
                 >
-                    <Menu.Item key="1">Home</Menu.Item>
-                    <Menu.Item key="2">Movies</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
+                    <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+                    <Menu.Item key="2"><Link to="/">Movies</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to="/">nav 3</Link></Menu.Item>
                 </Menu>
             </Header>
         )

@@ -22,6 +22,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Layout>
+                    <Router history={history}>
                     <HeaderMy/>
                     <Content style={{padding: '0 50px', marginTop: 64}}>
                         <Breadcrumb style={{margin: '16px 0'}}>
@@ -30,11 +31,12 @@ class App extends Component {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                         <div style={{background: '#eee', padding: 24, minHeight: 380}}>*****
-                            <Router history={history}>
+
                                 <Main/>
-                            </Router>
+
                         </div>
                     </Content>
+                    </Router>
                     <Footer>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
             </Provider>
