@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "./Button";
 
-class ButtonCounter extends Component {
+export class ButtonCounter extends Component {
     state = {
         counter: 0
     };
@@ -12,11 +12,11 @@ class ButtonCounter extends Component {
         });
     };
 
-    render() {
+    render () {
         return(
             <Button onClick={this.handleBtnClick} text={`You are clicked ${this.state.counter} times`}/>
-        )
+        );
     }
 }
 
-export default ButtonCounter;
+//export default ButtonCounter;

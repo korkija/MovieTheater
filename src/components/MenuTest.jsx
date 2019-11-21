@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import {Menu, Icon} from 'antd';
 
@@ -11,6 +11,8 @@ class MenuTest extends React.Component {
     state = {
         current: 'mail',
     };
+    //let list = [1,2,3,4,5,6,7,8,9,0];
+
 
     handleClick = e => {
         console.log('click ', e);
@@ -20,6 +22,16 @@ class MenuTest extends React.Component {
     };
 
     render() {
+
+        let list = [1,2,3,4,5,6,7,8,9,0];
+        // const list =[
+        //     {a:1},
+        //     {a:2},
+        //     {a:3},
+        //     {a:4},
+        //     {a:5},
+        //     {a:6},
+        //     {a:7}];
         return (
             <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
                 <Menu.Item key="sync">
@@ -42,6 +54,7 @@ class MenuTest extends React.Component {
                         <Menu.Item key="movie:2">Option 2</Menu.Item>
                     </Menu.ItemGroup>
                     <Menu.ItemGroup title="Fantastic">
+                        {list.map(elem => <Menu.Item key="movie:{elem}">{elem}</Menu.Item> )}
                         <Menu.Item key="movie:3">Option 3</Menu.Item>
                         <Menu.Item key="movie:4">Option 4</Menu.Item>
                     </Menu.ItemGroup>
