@@ -30,7 +30,7 @@ class App extends Component {
                             <Breadcrumb.Item>List</Breadcrumb.Item>
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
-                        <div style={{background: '#eee', padding: 24, minHeight: 380}}>*****
+                        <div style={{background: '#eee', padding: 24, minHeight: 380}}>
 
                                 <Main/>
 
@@ -47,42 +47,6 @@ class App extends Component {
 
 export default App;
 
-{/*<Provider store={store}>*/
-}
-{/*    <Layout>*/
-}
-{/*        <HeaderMy/>*/
-}
-{/*        <Content style={{padding: '0 50px', marginTop: 64}}>*/
-}
-{/*            <Breadcrumb style={{margin: '16px 0'}}>*/
-}
-{/*                <Breadcrumb.Item>Home</Breadcrumb.Item>*/
-}
-{/*                <Breadcrumb.Item>List</Breadcrumb.Item>*/
-}
-{/*                <Breadcrumb.Item>App</Breadcrumb.Item>*/
-}
-{/*            </Breadcrumb>*/
-}
-{/*            <div style={{background: '#eee', padding: 24, minHeight: 380}}>*/
-}
-{/*                <Router history={history}>*/
-}
-{/*                    <Main/>*/
-}
-{/*                </Router>*/
-}
-{/*            </div>*/
-}
-{/*        </Content>*/
-}
-{/*        <Footer>Ant Design ©2018 Created by Ant UED</Footer>*/
-}
-{/*    </Layout>*/
-}
-{/*</Provider>*/
-}
 
 
 /*

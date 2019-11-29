@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.25.0",
     "react": "^16.11.0",
+    "react-axios": "^2.0.3",
     "react-connect": "^0.4.0",
     "react-dom": "^16.11.0",
     "react-history": "^0.18.2",
@@ -34,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "axios": "^0.19.0"
   }
 }

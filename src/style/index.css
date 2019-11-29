@@ -29,3 +29,9 @@ Header {
   z-index: 1;
   width: 100%
 }
+
+.small-card {
+  display:inline-block;
+  justify-content: center;
+  margin: 16px 24px 16px 0;
+}

@@ -23,15 +23,6 @@ class MenuTest extends React.Component {
 
     render() {
 
-        let list = [1,2,3,4,5,6,7,8,9,0];
-        // const list =[
-        //     {a:1},
-        //     {a:2},
-        //     {a:3},
-        //     {a:4},
-        //     {a:5},
-        //     {a:6},
-        //     {a:7}];
         return (
             <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
                 <Menu.Item key="sync">
