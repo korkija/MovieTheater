@@ -7,8 +7,20 @@ import {
 const INITIAL_DATA = {
     isLoading: false,
     movies: [],
+    moviesFilter: [],
     errorMsg: ""
 };
+
+function genresToState (moviesList) {
+    let arr=[];
+    for (let i = 0; i < moviesList.length; i++) {
+        let generaItem = moviesList[i].genre.map((item) => item.trim());
+        arr = [...new Set([...arr, ...generaItem])];
+    }
+    let index = arr.indexOf("");
+    if (index !== -1) arr.splice(index, 1);
+    return arr;
+}
 
 export const movies = (state = INITIAL_DATA, action) => {
     switch (action.type) {
@@ -19,11 +31,15 @@ export const movies = (state = INITIAL_DATA, action) => {
                 errorMsg: ""
             };
         }
+
         case GET_MOVIES_RESOLVED: {
+            console.log("test");
             return {
                 ...state,
                 isLoading: false,
-                movies: action.payLoad
+                movies: action.payLoad,
+                moviesFilter: action.payLoad,
+                genres: genresToState(action.payLoad)
             };
         }
         case GET_MOVIES_REJECTED: {

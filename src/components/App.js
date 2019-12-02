@@ -31,9 +31,7 @@ class App extends Component {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                         <div style={{background: '#eee', padding: 24, minHeight: 380}}>
-
                                 <Main/>
-
                         </div>
                     </Content>
                     </Router>

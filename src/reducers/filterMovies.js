@@ -1,32 +1,34 @@
 import {
-    GET_MOVIES_SPACE_PENDING ,
-    GET_MOVIES_SPACE_RESOLVED ,
-    GET_MOVIES_SPACE_REJECTED ,
+    GET_MOVIES_FILTER_PENDING,
+    GET_MOVIES_FILTER_RESOLVED,
+    GET_MOVIES_FILTER_REJECTED
 } from "../constants";
 
 const INITIAL_DATA = {
     isLoading: false,
-    space: [],
+    moviesFilter: [],
     errorMsg: ""
 };
 
-export const space = (state = INITIAL_DATA, action) => {
+export const moviesFilter = (state = INITIAL_DATA, action) => {
     switch (action.type) {
-        case GET_MOVIES_SPACE_PENDING: {
+        case GET_MOVIES_FILTER_PENDING: {
             return {
                 ...state,
                 isLoading: true,
                 errorMsg: ""
             };
         }
-        case GET_MOVIES_SPACE_RESOLVED: {
+
+        case GET_MOVIES_FILTER_RESOLVED: {
+            console.log("test");
             return {
                 ...state,
                 isLoading: false,
-                space: action.payLoad
+                moviesFilter: action.payLoad
             };
         }
-        case GET_MOVIES_SPACE_REJECTED: {
+        case GET_MOVIES_FILTER_REJECTED: {
             return {
                 ...state,
                 isLoading: false,

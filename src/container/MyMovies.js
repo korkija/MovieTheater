@@ -2,25 +2,45 @@ import React from "react";
 import {connect} from "react-redux";
 import {getMovies} from "../actions/movies";
 import {SmallCard} from "../components/smallCards";
+import { MyFilterMoviesContainer } from "./DropdownMy";
 
 class MyMovies extends React.Component {
     componentDidMount() {
-        console.log(this.props);
         this.props.getMovies();
     }
 
     render() {
-        const {
+        let {
             isLoading,
-            movies
+            movies,
         } = this.props;
-   
+
+        // const genr = ()=> {
+        //     let arr=[];
+        //     for (let i = 0; i < movies.moviesFilter.length; i++) {
+        //         let generaItem = movies.moviesFilter[i].genre.map((item) => item.trim());
+        //         arr = [...new Set([...arr, ...generaItem])];
+        //     }
+        //     let index = arr.indexOf("");
+        //     if (index !== -1) arr.splice(index, 1);
+        //     return arr;
+        // };
+        //
+        // const genres = genr();
         return (
             <div>
                 {
-                    isLoading && (movies.movies.length > 0)
+                    isLoading
                         ? <div>Loading</div>
-                        : movies.movies.map((item, i) => (
+                        : <div>
+                        <MyFilterMoviesContainer/>
+
+                        </div>
+                }
+                {
+                    isLoading
+                        ? <div>Loading</div>
+                        : movies.moviesFilter.map((item, i) => (
                             <div className="small-card" key={i}>
                                 <SmallCard title={item.title} poster={item.poster}/>
                             </div>
@@ -33,7 +53,8 @@ class MyMovies extends React.Component {
 const mapStateToProps = (state) => ({
     errorMsg: state.errorMsg,
     isLoading: state.isLoading,
-    movies: state.movies
+    movies: state.movies,
+    moviesFilter: state.moviesFilter,
 });
 
 const mapDispatchToProps = {

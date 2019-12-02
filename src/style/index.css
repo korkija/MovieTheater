@@ -35,3 +35,9 @@ Header {
   justify-content: center;
   margin: 16px 24px 16px 0;
 }
+.find-movies {
+  display:inline-block;
+  vertical-align:bottom;
+  /*justify-content: center;*/
+  /*margin: 16px 24px 16px 0;*/
+}

@@ -11,7 +11,8 @@ export const SmallCard = ({title, poster,createCard}) => {
     const [showForm, setShowForm] = useState(false);
 
     const handleClickAdd = () => {
-        console.log(title);
+        console.log(document.location);
+        document.location.href+="movie/"+title;
         setShowForm(true);
     };
     const handleSubmit = (data) => {

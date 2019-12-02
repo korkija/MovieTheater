@@ -23,8 +23,7 @@ export const getMovies = () => {
         axios.get(URL_MOVIE)
             .then(({data}) => {
                 //history.push("/");
-                console.log("data.movies.movie");
-
+                console.log("data.movie");
                 console.log(data.movie);
                 dispatch(getMoviesResolved(data.movie));
 
