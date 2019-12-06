@@ -1,18 +1,22 @@
-import React, {useState, useEffect} from "react";
-import ReactDOM from 'react-dom';
+import React from "react";
+import {connect} from "react-redux";
+
 import 'antd/dist/antd.css';
 import '../style/index.css';
-import {Menu, Dropdown, Button, Icon, message} from 'antd';
-import {store} from "../store";
+import {Menu, Dropdown, Button, Icon} from 'antd';
 import {Input} from 'antd';
 import {getFilterMovies} from "../actions/filterMovies";
-import {connect} from "react-redux";
+import {store} from "../store";
 
 const {Search} = Input;
 
+let testGenres;
 class DropdownMy extends React.Component {
     componentDidMount() {
-        this.props.getFilterMovies();
+        this.props.getFilterMovies(testGenres);
+    }
+    componentWillUpdate() {
+        this.props.getFilterMovies(testGenres);
     }
 
 
@@ -46,40 +50,27 @@ class DropdownMy extends React.Component {
     //
     //
 
-
-
-
-
 render(){
-    let {
-        movies,
-        genres
-    } = this.props;
+    let {movies,moviesFilter} = store.getState();
+    const genres=movies.genres;
 
     const handleSearch = () => {
-            console.log("state");
+            console.log("movies");
             console.log(movies);
         };
 
     const handleMenuClick = (e) => {
-        let arrMovies = movies.movies;
         const genreFilter = e.item.props.children;
-        let results = arrMovies.filter(item => {
-            let trash = item.genre.find(
-                item2 => {
-                    return item2.trim() === genreFilter
-                });
-            return genreFilter === (trash?trash.trim():"1");
-        });
         let buttonchick = document.querySelector(".filter1");
         buttonchick.textContent = genreFilter;
-
-        return results;
+        testGenres=genreFilter;
+        console.log("test!!!!!");
+        this.setState({moviesFilter: [1,2,3,4,5]});
     };
     const menu = (
         <Menu onClick={handleMenuClick}>
             {
-                genres.map((item, i) =>
+                    genres.map((item, i) =>
                     <Menu.Item key={i}>
                         {item}
                     </Menu.Item>)
@@ -88,11 +79,10 @@ render(){
     );
 
     return (
-
         <div>
             <div className="find-movies" id="components-dropdown-demo-dropdown-button">
                 <Dropdown overlay={menu}>
-                    <Button>
+                    <Button className="dropdown-my">
                         <span className="filter1">Жанры</span><Icon type="down"/>
                     </Button>
                 </Dropdown>
@@ -107,15 +97,15 @@ render(){
         </div>
     );
 }
-};
+}
 
 const mapStateToProps = (state) => ({
     errorMsg: state.errorMsg,
     isLoading: state.isLoading,
-    genres: state.genres,
+    genres: state.genres
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps  = {
     getFilterMovies
 };
 export const MyFilterMoviesContainer = connect(

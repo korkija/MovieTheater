@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {Provider} from "react-redux";
+import {connect} from "react-redux";
 import {Router} from "react-router-dom";
-import {Link} from "react-router-dom";
-import {store} from "../store";
 import {Layout, Breadcrumb} from 'antd';
 import {createBrowserHistory} from "history";
 import {HeaderMy} from "../components/HeaderMy";
@@ -11,16 +9,24 @@ import {Main} from "../routs/index";
 import '../style/App.css';
 import 'antd/dist/antd.css';
 import '../style/index.css';
+import {getMovies} from "../actions/movies";
+import {defaultGetMovies} from "../actions/ChooseMovie";
 
 const {Content, Footer} = Layout;
 
 export const history = createBrowserHistory();
 
-class App extends Component {
+class App extends React.Component {
+    componentDidMount() {
+        this.props.getMovies();
+        this.props.defaultGetMovies();
+    }
 
     render() {
+        let {
+            movies,
+        } = this.props;
         return (
-            <Provider store={store}>
                 <Layout>
                     <Router history={history}>
                     <HeaderMy/>
@@ -37,43 +43,23 @@ class App extends Component {
                     </Router>
                     <Footer>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
-            </Provider>
         );
     }
 }
+//export default App;
 
+const mapStateToProps = (state) => ({
+    errorMsg: state.errorMsg,
+    isLoading: state.isLoading,
+    movies: state.movies,
+    //moviesFilter: state.moviesFilter,
+});
 
-export default App;
-
-
-
-/*
-
-   <div className="App">
-     <header className="App-header">
-       <MenuTest/>
-       <p>
-         Edit <code>src/App.js</code> and save to reload.
-       </p>
-       <ButtonCounter />
-       <Hello />
-       <a
-         className="App-link"
-         href="https://reactjs.org"
-         target="_blank"
-         rel="noopener noreferrer"
-       >
-         Learn React
-       </a>
-     </header>
-   </div>
-
-*/
-
-
-/*
-// ReactDOM.render(
-//     ,
-//     document.getElementById('container'),
-// );
-*/
+const mapDispatchToProps = {
+    getMovies,
+    defaultGetMovies
+};
+export const MyApp = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

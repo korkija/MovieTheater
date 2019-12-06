@@ -1,6 +1,6 @@
 import axios from "axios";
+import {store} from "../store";
 
-import {history} from "../index"
 import {
     GET_MOVIES_PENDING,
     GET_MOVIES_REJECTED,
@@ -22,12 +22,8 @@ export const getMovies = () => {
         dispatch(getMoviesPending());
         axios.get(URL_MOVIE)
             .then(({data}) => {
-                //history.push("/");
-                console.log("data.movie");
-                console.log(data.movie);
                 dispatch(getMoviesResolved(data.movie));
 
-                //console.log(data.movies.movie);
             })
             .catch((error) => {
                 console.log(error);
@@ -35,3 +31,4 @@ export const getMovies = () => {
             })
     };
 };
+

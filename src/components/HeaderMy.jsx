@@ -29,7 +29,7 @@ export class HeaderMy extends Component {
         )
     }
 }
-export default  HeaderMy;
+//export default  HeaderMy;
 /*
 
 

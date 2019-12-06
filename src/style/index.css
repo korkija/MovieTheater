@@ -38,6 +38,16 @@ Header {
 .find-movies {
   display:inline-block;
   vertical-align:bottom;
+
   /*justify-content: center;*/
   /*margin: 16px 24px 16px 0;*/
+}
+
+.dropdown-my{
+  width: 130px;
+  float: right
+}
+
+.filter1{
+  float: left
 }
