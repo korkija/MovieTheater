@@ -4,7 +4,9 @@ import {
     GET_MOVIES_RESOLVED,
     GET_CHOOSE_MOVIE_RESOLVED,
     GET_MOVIES_FILTER_RESOLVED,
-    GET_MOVIES_FILTER_REJECTED
+    GET_SESSIONS_REJECTED,
+    GET_SESSIONS_PENDING,
+    GET_SESSIONS_RESOLVED, GET_ROOMS_RESOLVED, GET_ROOMS_REJECTED, GET_ROOMS_PENDING
 } from "../constants";
 import {store} from "../store";
 
@@ -14,7 +16,9 @@ const INITIAL_DATA = {
     moviesFilter: [],
     chooseMovie: {},
     genres: [],
-    errorMsg: ""
+    errorMsg: "",
+    sessions: [],
+    rooms: []
 };
 
 function genresToState(moviesList) {
@@ -77,6 +81,52 @@ export const movies = (state = INITIAL_DATA, action) => {
                 ...state,
                 isLoading: false,
                 errorMsg: action.payLoad
+            };
+        }
+        case GET_SESSIONS_PENDING: {
+            return {
+                ...state,
+                isLoading: true,
+                errorMsg: ""
+            };
+        }
+        case GET_SESSIONS_REJECTED: {
+            return {
+                ...state,
+                isLoading: false,
+                errorMsg: action.payLoad
+            };
+        }
+        case GET_SESSIONS_RESOLVED: {
+            // console.log("action.payLoad  GET_SESSIONS");
+            // console.log(action.payLoad);
+            return {
+                ...state,
+                isLoading: false,
+                sessions: action.payLoad
+            };
+        }
+        case GET_ROOMS_PENDING: {
+            return {
+                ...state,
+                isLoading: true,
+                errorMsg: ""
+            };
+        }
+        case GET_ROOMS_REJECTED: {
+            return {
+                ...state,
+                isLoading: false,
+                errorMsg: action.payLoad
+            };
+        }
+        case GET_ROOMS_RESOLVED: {
+            console.log("action.payLoad  GET_ROOMS");
+            console.log(action.payLoad);
+            return {
+                ...state,
+                isLoading: false,
+                rooms: action.payLoad
             };
         }
         default: {

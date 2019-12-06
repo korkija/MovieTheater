@@ -8,7 +8,6 @@ import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {getMovies} from "../actions/movies";
 
-const {Meta} = Card;
 
 class DetailCard extends React.Component {
    // const {movies} = store.getState();

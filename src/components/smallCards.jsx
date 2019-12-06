@@ -5,25 +5,16 @@ import { Card } from 'antd';
 import {Link} from "react-router-dom";
 import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 
-import {store} from "../store";
 import {connect} from "react-redux";
 
 const { Meta } = Card;
 
-export const SmallCard = (props) => {
-    //export const SmallCard = ({movie}) => {
-        console.log(" фильм для маленькой карты");
-        console.log(props);
+const SmallCard = (props) => {
         const movie = props.movie;
-        const {title, poster,createCard} = movie;
-        const [showForm, setShowForm] = useState(false);
+        const {title, poster} = movie;
 
         const handleClickAdd = () => {
-            console.log(`клик по смол кард ${title}`);
-
             props.checkMoviesOrGetMovies(movie);
-
-            setShowForm(true);
         };
         const newUrl="/movie/"+title;
         return (
@@ -38,19 +29,15 @@ export const SmallCard = (props) => {
                 </Card>
             </Link>
         )
-
 };
 
-
 const mapStateToProps = (state) => ({
-    // errorMsg: state.errorMsg,
     isLoading: state.isLoading,
     movies: state.movies,
     moviesFilter: state.moviesFilter,
     chooseMovie: state.chooseMovie,
 });
 const mapDispatchToProps = {
-    // getMovies,
     checkMoviesOrGetMovies
 };
 export const

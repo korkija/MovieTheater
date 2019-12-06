@@ -11,6 +11,7 @@ export class HeaderMy extends Component {
     };
 
     render() {
+        // defaultSelectedKeys={['1']}
         return (
             <Header>
                 <div className="logo"/>
@@ -23,7 +24,8 @@ export class HeaderMy extends Component {
                 >
                     <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
                     <Menu.Item key="2"><Link to="/movie">Movie</Link></Menu.Item>
-                    <Menu.Item key="3"><Link to="/button">button 3</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to="/sessions">Sessions</Link></Menu.Item>
+                    <Menu.Item key="4"><Link to="/button">button 3</Link></Menu.Item>
                 </Menu>
             </Header>
         )
