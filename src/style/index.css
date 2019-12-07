@@ -51,3 +51,8 @@ Header {
 .filter1{
   float: left
 }
+
+.sessions_detail{
+  display:inline-block;
+  vertical-align:bottom;
+}

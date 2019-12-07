@@ -39,6 +39,7 @@ export const getSessions = () => {
         dispatch(getSessionsPending());
         axios.get(URL_SESSIONS)
             .then(({data}) => {
+                console.log("------------------getSessions-------------------");
                 console.log(data);
                 dispatch(getSessionsResolved(data.session));
 
@@ -64,6 +65,7 @@ export const getRooms = () => {
         dispatch(getRoomsPending());
         axios.get(URL_ROOMS)
             .then(({data}) => {
+                console.log("------------------getRooms-------------------");
                 console.log(data);
                 dispatch(getRoomsResolved(data.rooms));
 
