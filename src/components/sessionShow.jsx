@@ -1,65 +1,57 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, {useState} from "react";
 import {Layout, Menu} from "antd";
-import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
+import {getSessionSpace} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
-import {MySmallCard} from "./smallCards";
+import {MySessionSpace} from "./Modal";
 
 const {Header} = Layout;
 
 const SessionsToFilm = (props) => {
     const movie = props.movie;
     const {title, poster, _id} = movie;
-
-    const handleSelect = e => {
-        console.log('click', e);
-    };
-
     const sessions = props.movies.sessions;
-    const rooms = props.movies.rooms;
-    const movies = props.movies.movies;
     const isLoading = props.movies.isLoading;
-    //const isLoading = this.props.isLoading;
-    // defaultSelectedKeys={['1']}
     let sessionsToMovie = sessions.filter((itemSession) => {
         return itemSession.movie === _id;
-
-
     });
-    console.log(sessionsToMovie);
-    //     let trash = item.genre.find(
-    //         item2 => {
-    //             return item2.trim() === genreFilter
-    //         });
-    //
-    //     return genreFilter === (trash ? trash.trim() : "1");
-    // );
 
+    const [show, toggleShow] = useState(false);
+    const [session, setSession] = useState();
+
+
+
+    const handleSelect = e => {
+        setSession(e);
+        console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        console.log(e);
+        props.getSessionSpace(e);
+
+
+        toggleShow(true);
+    };
+    const handlerClickShow = (event) => {
+        toggleShow(false);
+    };
     return (
         <div>
+            {show && <MySessionSpace  title={title} handleShow={handlerClickShow}/>}
             {
                 isLoading
                     ? <div>Loading</div>
                     : sessionsToMovie.map((item, i) => (
-                        <div className="sessions_detail" key={i}>
+                        <div className="sessions_detail card" id={item._id} key={i} onClick={() => handleSelect(item._id)} >
                             <p>цена {item.costs} грн.</p>
                             <p>начало {item.date}</p>
                             <p>зал {item.room}</p>
                         </div>
                     ))
             }
+
+
         </div>
 
     );
-
-    //         )
-    //         )
-
 };
-
-
-
-
 
 const mapStateToProps = (state) => ({
     isLoading: state.isLoading,
@@ -68,10 +60,31 @@ const mapStateToProps = (state) => ({
     chooseMovie: state.chooseMovie,
 });
 const mapDispatchToProps = {
-    checkMoviesOrGetMovies
+    getSessionSpace
 };
 export const
     MySessionShow = connect(
         mapStateToProps,
         mapDispatchToProps
     )(SessionsToFilm);
+
+
+// <div>
+// {
+// isLoading
+// ? <div>Loading</div>
+// :{show && <MySessionSpace  title={title} handleShow={handlerClickShow}/>
+// <p>hello</p>
+// {sessionsToMovie.map((item, i) => {
+// <div className="sessions_detail card" id={item._id} key={i} onClick={handleSelect} >
+// <p>цена {item.costs} грн.</p>
+// <p>начало {item.date}</p>
+// <p>зал {item.room}</p>
+// </div>
+// {show && <MySessionSpace data={item._id} title={title} handleShow={handlerClickShow}/>}
+//
+// }
+// )}}
+//
+//
+// </div>

@@ -12,7 +12,12 @@ import {
     URL_SESSIONS,
     GET_ROOMS_RESOLVED,
     GET_ROOMS_REJECTED,
-    GET_ROOMS_PENDING, URL_ROOMS
+    GET_ROOMS_PENDING,
+    URL_ROOMS,
+    GET_SESSION_SPACE_RESOLVED,
+    GET_SESSION_SPACE_REJECTED,
+    GET_SESSION_SPACE_PENDING,
+    URL_SESSION_SPACE
 } from "../constants";
 import axios from "axios";
 
@@ -28,7 +33,8 @@ export const defaultGetMovies = (payLoad) => ({
 const getSessionsPending = () => ({type: GET_SESSIONS_PENDING});
 const getSessionsResolved = (payLoad) => ({
     type: GET_SESSIONS_RESOLVED,
-    payLoad});
+    payLoad
+});
 const getSessionsRejected = () => ({
     type: GET_SESSIONS_REJECTED,
     payLoad: "Something wrong!"
@@ -54,7 +60,8 @@ export const getSessions = () => {
 const getRoomsPending = () => ({type: GET_ROOMS_PENDING});
 const getRoomsResolved = (payLoad) => ({
     type: GET_ROOMS_RESOLVED,
-    payLoad});
+    payLoad
+});
 const getRoomsRejected = () => ({
     type: GET_ROOMS_REJECTED,
     payLoad: "Something wrong!"
@@ -73,6 +80,37 @@ export const getRooms = () => {
             .catch((error) => {
                 console.log(error);
                 dispatch(getRoomsRejected());
+            })
+    };
+};
+
+
+const getSessionSpacePending = () => ({type: GET_SESSION_SPACE_PENDING});
+const getSessionSpaceResolved = (payLoad) => ({
+    type: GET_SESSION_SPACE_RESOLVED,
+    payLoad
+});
+const getSessionSpaceRejected = () => ({
+    type: GET_SESSION_SPACE_REJECTED,
+    payLoad: "Something wrong!"
+});
+
+export const getSessionSpace = (payload) => {
+    return (dispatch) => {
+        dispatch(getSessionSpacePending());
+        console.log("URL_SESSION_SPACE+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+        console.log(URL_SESSION_SPACE+"?session="+payload);
+        axios.get(URL_SESSION_SPACE+"?session="+payload)
+            .then(({data}) => {
+                console.log(URL_SESSION_SPACE+"?session="+payload);
+                console.log("------------------getSessions-------------------");
+                console.log(data);
+                dispatch(getSessionSpaceResolved(data.space));
+
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(getSessionSpaceRejected());
             })
     };
 };

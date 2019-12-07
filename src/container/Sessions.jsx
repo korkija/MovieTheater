@@ -10,10 +10,8 @@ import {MySessionShow} from "../components/sessionShow";
 
 class SessionsMovies extends React.Component {
     componentDidMount() {
-        console.log("1111111111SessionsMovies omponentDidMount11111111111");
         this.props.getSessions();
         this.props.getRooms();
-        console.log(this.props);
     }
 
     render() {
@@ -25,22 +23,20 @@ class SessionsMovies extends React.Component {
             isLoading
                 ? <div>Loading</div>
                 : movies.map((itemMovie, i) => (
-                    <div  key={i}>
-                    <div  className="sessions_detail">
-                    <Card
-                        hoverable
-                        title={itemMovie.title}
-                        style={{width: 200}}
-                        cover={<img alt={itemMovie.title} src={itemMovie.poster}
-                        />}
-                    >
-                        <p>{itemMovie.country}</p>
-                        <p>{itemMovie.description}</p>
-
-                    </Card>
-                    </div>
+                    <div key={i}>
                         <div className="sessions_detail">
-                            <MySessionShow  movie={itemMovie}/>
+                            <Card
+                                hoverable
+                                title={itemMovie.title}
+                                style={{width: 200}}
+                                cover={<img alt={itemMovie.title} src={itemMovie.poster}
+                                />}
+                            >
+                                <p>{itemMovie.country}</p>
+                            </Card>
+                        </div>
+                        <div className="sessions_detail">
+                            <MySessionShow movie={itemMovie}/>
                         </div>
 
 

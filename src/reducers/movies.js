@@ -6,7 +6,13 @@ import {
     GET_MOVIES_FILTER_RESOLVED,
     GET_SESSIONS_REJECTED,
     GET_SESSIONS_PENDING,
-    GET_SESSIONS_RESOLVED, GET_ROOMS_RESOLVED, GET_ROOMS_REJECTED, GET_ROOMS_PENDING
+    GET_SESSIONS_RESOLVED,
+    GET_ROOMS_RESOLVED,
+    GET_ROOMS_REJECTED,
+    GET_ROOMS_PENDING,
+    GET_SESSION_SPACE_RESOLVED,
+    GET_SESSION_SPACE_PENDING,
+    GET_SESSION_SPACE_REJECTED
 } from "../constants";
 import {store} from "../store";
 
@@ -18,7 +24,8 @@ const INITIAL_DATA = {
     genres: [],
     errorMsg: "",
     sessions: [],
-    rooms: []
+    rooms: [],
+    sessionSpace: []
 };
 
 function genresToState(moviesList) {
@@ -49,7 +56,7 @@ export const movies = (state = INITIAL_DATA, action) => {
         }
 
         case GET_MOVIES_FILTER_RESOLVED: {
-            console.log("test GET_MOVIES_FILTER_RESOLVED");
+            // console.log("test GET_MOVIES_FILTER_RESOLVED");
             return {
                 ...state,
                 isLoading: false,
@@ -57,8 +64,8 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_CHOOSE_MOVIE_RESOLVED: {
-            console.log("action.payLoad  GET_CHOOSE_MOVIE_RESOLVED");
-            console.log(action.payLoad);
+            // console.log("action.payLoad  GET_CHOOSE_MOVIE_RESOLVED");
+            // console.log(action.payLoad);
             return {
                 ...state,
                 isLoading: false,
@@ -106,6 +113,29 @@ export const movies = (state = INITIAL_DATA, action) => {
                 sessions: action.payLoad
             };
         }
+        case GET_SESSION_SPACE_PENDING: {
+            return {
+                ...state,
+                isLoading: true,
+                errorMsg: ""
+            };
+        }
+        case GET_SESSION_SPACE_REJECTED: {
+            return {
+                ...state,
+                isLoading: false,
+                errorMsg: action.payLoad
+            };
+        }
+        case GET_SESSION_SPACE_RESOLVED: {
+            console.log("action.payLoad  GET_SESSION_SPACE_RESOLVED0000000000000000000000000000000000");
+            console.log(action.payLoad);
+            return {
+                ...state,
+                isLoading: false,
+                sessionSpace: action.payLoad
+            };
+        }
         case GET_ROOMS_PENDING: {
             return {
                 ...state,
@@ -121,8 +151,8 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_ROOMS_RESOLVED: {
-            console.log("action.payLoad  GET_ROOMS");
-            console.log(action.payLoad);
+            // console.log("action.payLoad  GET_ROOMS");
+            // console.log(action.payLoad);
             return {
                 ...state,
                 isLoading: false,

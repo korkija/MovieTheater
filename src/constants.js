@@ -15,6 +15,11 @@ export const GET_SESSIONS_REJECTED = "GET_SESSIONS_REJECTED";
 export const GET_SESSIONS_PENDING = "GET_SESSIONS_PENDING";
 export const URL_SESSIONS = "http://subdomain.entony.fs.a-level.com.ua/api/movie/session";
 
+export const GET_SESSION_SPACE_RESOLVED = "GET_SESSION_SPACE_RESOLVED";
+export const GET_SESSION_SPACE_REJECTED = "GET_SESSION_SPACE_REJECTED";
+export const GET_SESSION_SPACE_PENDING = "GET_SESSION_SPACE_PENDING";
+export const URL_SESSION_SPACE = "http://subdomain.entony.fs.a-level.com.ua/api/movie/space-shadow";
+
 export const GET_ROOMS_RESOLVED = "GET_ROOMS_RESOLVED";
 export const GET_ROOMS_REJECTED = "GET_ROOMS_REJECTED";
 export const GET_ROOMS_PENDING = "GET_ROOMS_PENDING";
