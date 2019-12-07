@@ -82,7 +82,7 @@ Header {
 
 .modal {
    width: 600px;
-   height: 400px;
+   height: 500px;
    background: #ffffff;
  }
 /* The Modal (background) */
@@ -106,4 +106,43 @@ Header {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+ul.hr {
+  margin: 0; /* Обнуляем значение отступов */
+  padding: 4px; /* Значение полей */
+}
+ul.hr li {
+  display: inline; /* Отображать как строчный элемент */
+  margin-right: 5px; /* Отступ слева */
+  border: 1px solid #000; /* Рамка вокруг текста */
+  padding: 3px; /* Поля вокруг текста */
+}
+
+.row-place10x7{
+  width: 500px;
+  height: 350px;
+  /*display: flex;*/
+  text-align: center;
+  align-items:center;
+  justify-content: center;
+  overflow: hidden;
+  /*position : fixed;*/
+  /*top: 0;*/
+  /*left:0*/
+  /*display:inline-block;*/
+  vertical-align:bottom;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+.seat{
+  float: left;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  margin: 3px;
+  background: chartreuse;
 }
