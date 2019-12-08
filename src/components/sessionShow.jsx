@@ -34,7 +34,7 @@ const SessionsToFilm = (props) => {
                         <div className="sessions_detail card" id={item._id} key={i} onClick={() => handleSelect(item._id)} >
                             <p>цена {item.costs} грн.</p>
                             <p>начало {item.date}</p>
-                            <p>зал {item.room}</p>
+
                         </div>
                     ))
             }

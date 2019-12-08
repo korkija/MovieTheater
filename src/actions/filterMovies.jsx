@@ -9,14 +9,8 @@ const getFilterMoviesPending = () => ({type: GET_MOVIES_FILTER_PENDING});
 const getFilterMoviesResolved = (payLoad) => ({
     type: GET_MOVIES_FILTER_RESOLVED,
     payLoad});
-// const getFilterMoviesRejected = () => ({
-//     type: GET_MOVIES_FILTER_REJECTED,
-//     payLoad: "Something wrong!"
-// });
 
 export const getFilterMovies = (genreFilter) => {
-    // console.log("this123");
-    // console.log(this);
     return (dispatch) => {
         dispatch(getFilterMoviesPending());
         let {movies} = store.getState();

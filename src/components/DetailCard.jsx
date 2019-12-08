@@ -7,12 +7,6 @@ import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 
 class DetailCard extends React.Component {
-   // const {movies} = store.getState();
-    componentDidMount() {
-    //     let {movies} = store.getState();
-       // const state = store.getState();
-        //props.checkMoviesOrGetMovies(this.props.moviesFilter);
-   }
 
     render() {
         let {

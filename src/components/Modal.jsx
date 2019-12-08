@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import {setSessionSpaceEmpty, addTickets} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {store} from "../store";
+import {Link} from "react-router-dom";
+import Route from "react-router-dom/es/Route";
 
 class Modal extends React.Component {
 
     state = store.getState();
-
-    //  const {  movies } = state;
 
     componentWillMount() {
         this.root = document.createElement("div");
@@ -18,15 +18,14 @@ class Modal extends React.Component {
 
     componentWillUnmount() {
         this.props.setSessionSpaceEmpty();
-
         this.root.remove();
     }
 
-    handleSelect= (event) =>  {
+    handleSelect = (event) => {
         const {movies} = store.getState();
         const chosenOrNot = event.target.classList;
 
-        if ([].includes.call(chosenOrNot, 'free')&&!([].includes.call(chosenOrNot, 'choosen-place'))) {
+        if ([].includes.call(chosenOrNot, 'free') && !([].includes.call(chosenOrNot, 'choosen-place'))) {
             event.target.classList.add("choosen-place");
             const ticket = movies.sessionSpace.find(item => item._id === event.target.getAttribute("data"));
             this.props.addTickets(ticket);
@@ -38,7 +37,6 @@ class Modal extends React.Component {
             movies
         } = this.props;
 
-        console.log(movies);
         movies.sessionSpace.sort(function (a, b) {
             return (a.row - b.row);
         });
@@ -46,43 +44,38 @@ class Modal extends React.Component {
             return (a.row === b.row) && (a.place - b.place);
         });
         const widthSize = movies.sessionSpace.length === 70 ? "seat10x7" : "seat14x10";
-
-        // function handleSelect1(event) {
-        //
-        //     const chosenOrNot =event.target.classList;
-        //
-        //     if ([].includes.call(chosenOrNot, 'free')){
-        //         event.target.classList.add("choosen-place");
-        //         console.log("----------------------------------------------");
-        //         console.log();
-        //         const ticket = movies.sessionSpace.find(item=> item._id===event.target.getAttribute("data"));
-        //         props.addTickets(ticket);
-        //     }
-        //
-        // }
-
         const checkPlace = movies.sessionSpace.filter((item) => {
             return (item.free);
         });
-
+        const flagShow = checkPlace.length === 0 ? false : true;
         let message = checkPlace.length === 0 ? "Мест нет!" : "";
         const handleSelectSame = this.handleSelect;
         return ReactDOM.createPortal(
-            <div className="portal-wrapper">
-                <div className="modal">
-                    <h1>{this.props.title}</h1>
-                    <button onClick={this.props.handleShow}>Close</button>
-                    <p>{message}</p>
-                    <div className="row-place10x7 ">
-                        {movies.sessionSpace.map((item) => (
-                            <div className={item.free ? widthSize + " free" : widthSize + " taken"}
-                                 onClick={item.free && handleSelectSame} data={item._id}
-                                 key={item._id}>{item.place}</div>
-                        ))
+            <div>
+                <div className=" portal-wrapper">
+                    <div className="modal ">
+                        <div className="line-div"><h2>{this.props.title}</h2></div>
+                        <div className="line-div">
+                            <p>
+                                <button onClick={this.props.handleShow}>Close</button>
+                            </p>
+                        </div>
 
-                        }
+                        {!flagShow&&(<div className="line-div"><p> {message}</p></div>)}
+
+                        {movies.tickets.length!==0&&(<div className="line-div order"><p>забронированно билетов: {movies.tickets.length} </p></div>)}
+                        {movies.tickets.length!==0&&(<div className="line-div order"><Link to="/buy"><button>Buy</button></Link></div>)}
+
+                        <div className="row-place10x7 ">
+                            {movies.sessionSpace.map((item) => (
+                                <div className={item.free ? widthSize + " free" : widthSize + " taken"}
+                                     onClick={item.free && handleSelectSame} data={item._id}
+                                     key={item._id}>{item.place}</div>
+                            ))
+                            }
+                        </div>
+
                     </div>
-
                 </div>
             </div>,
             this.root

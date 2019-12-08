@@ -167,8 +167,6 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case SET_NEW_TICKET: {
-            console.log("action.payLoad  SET_NEW_TICKET ticket ticket ticket");
-            console.log(action.payLoad);
             return {
                 ...state,
                 tickets: [...state.tickets, action.payLoad]

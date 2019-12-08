@@ -15,8 +15,6 @@ class SessionsMovies extends React.Component {
     }
 
     render() {
-        const sessions = this.props.sessions;
-        const rooms = this.props.rooms;
         const movies = this.props.movies;
         const isLoading = this.props.isLoading;
         return (
