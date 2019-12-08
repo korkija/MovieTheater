@@ -26,14 +26,11 @@ class Modal extends React.Component {
         const {movies} = store.getState();
         const chosenOrNot = event.target.classList;
 
-        if ([].includes.call(chosenOrNot, 'free')) {
+        if ([].includes.call(chosenOrNot, 'free')&&!([].includes.call(chosenOrNot, 'choosen-place'))) {
             event.target.classList.add("choosen-place");
-            console.log("----------------------------------------------");
-            console.log();
             const ticket = movies.sessionSpace.find(item => item._id === event.target.getAttribute("data"));
             this.props.addTickets(ticket);
         }
-
     };
 
     render() {
