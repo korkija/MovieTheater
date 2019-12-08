@@ -1,19 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import '../style/index.css';
 import {Card} from 'antd';
-import {store} from "../store";
 
 import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
-import {getMovies} from "../actions/movies";
-
 
 class DetailCard extends React.Component {
    // const {movies} = store.getState();
     componentDidMount() {
     //     let {movies} = store.getState();
-        const state = store.getState();
+       // const state = store.getState();
         //props.checkMoviesOrGetMovies(this.props.moviesFilter);
    }
 

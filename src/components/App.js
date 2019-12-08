@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {Router} from "react-router-dom";
 import {Layout, Breadcrumb} from 'antd';
@@ -23,9 +23,7 @@ class App extends React.Component {
     }
 
     render() {
-        let {
-            movies,
-        } = this.props;
+
         return (
                 <Layout>
                     <Router history={history}>

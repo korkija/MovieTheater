@@ -31,12 +31,6 @@ export class HeaderMy extends Component {
         )
     }
 }
-//export default  HeaderMy;
-/*
-
-
-
- */
 
 
 
@@ -45,17 +39,3 @@ export class HeaderMy extends Component {
 
 
 
-
-
-        {/*<Link to="/">Home</Link>*/}
-{/*<Link to="/movies">Movies</Link>*/}
-{/*<Link to="/form">Movies</Link>*/}
-/*
-<Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-   <Menu.Item key="2"><Link to="/movies">Movies</Link></Menu.Item>
-   <Menu.Item key="3"><Link to="/">Home</Link></Menu.Item>
-   */
-/*  <Menu key="1">Home</Menu>
-  <Menu key="2">Movies</Menu>
-  <Menu key="3">Home</Menu>
-</Menu>*/

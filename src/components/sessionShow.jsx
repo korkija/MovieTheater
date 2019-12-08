@@ -1,14 +1,12 @@
 import React, {useState} from "react";
-import {Layout, Menu} from "antd";
 import {getSessionSpace} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {MySessionSpace} from "./Modal";
 
-const {Header} = Layout;
 
 const SessionsToFilm = (props) => {
     const movie = props.movie;
-    const {title, poster, _id} = movie;
+    const {title, _id} = movie;
     const sessions = props.movies.sessions;
     const isLoading = props.movies.isLoading;
     let sessionsToMovie = sessions.filter((itemSession) => {
@@ -16,20 +14,14 @@ const SessionsToFilm = (props) => {
     });
 
     const [show, toggleShow] = useState(false);
-    const [session, setSession] = useState();
-
-
+   // const [session, setSession] = useState();
 
     const handleSelect = e => {
-        setSession(e);
-        console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-        console.log(e);
+        //setSession(e);
         props.getSessionSpace(e);
-
-
         toggleShow(true);
     };
-    const handlerClickShow = (event) => {
+    const handlerClickShow = () => {
         toggleShow(false);
     };
     return (

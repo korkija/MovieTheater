@@ -1,14 +1,9 @@
-import {store} from "../store";
-import {getMovies} from "./movies";
-
-
 import {
     GET_CHOOSE_MOVIE_RESOLVED,
     GET_CHOOSE_MOVIE_DEFAULT_RESOLVED,
     GET_SESSIONS_PENDING,
     GET_SESSIONS_RESOLVED,
     GET_SESSIONS_REJECTED,
-    GET_MOVIES_REJECTED,
     URL_SESSIONS,
     GET_ROOMS_RESOLVED,
     GET_ROOMS_REJECTED,
@@ -17,7 +12,9 @@ import {
     GET_SESSION_SPACE_RESOLVED,
     GET_SESSION_SPACE_REJECTED,
     GET_SESSION_SPACE_PENDING,
-    URL_SESSION_SPACE
+    URL_SESSION_SPACE,
+    SET_SESSION_SPACE_EMPTY,
+    SET_NEW_TICKET
 } from "../constants";
 import axios from "axios";
 
@@ -45,8 +42,6 @@ export const getSessions = () => {
         dispatch(getSessionsPending());
         axios.get(URL_SESSIONS)
             .then(({data}) => {
-                console.log("------------------getSessions-------------------");
-                console.log(data);
                 dispatch(getSessionsResolved(data.session));
 
             })
@@ -72,8 +67,6 @@ export const getRooms = () => {
         dispatch(getRoomsPending());
         axios.get(URL_ROOMS)
             .then(({data}) => {
-                console.log("------------------getRooms-------------------");
-                console.log(data);
                 dispatch(getRoomsResolved(data.rooms));
 
             })
@@ -95,16 +88,21 @@ const getSessionSpaceRejected = () => ({
     payLoad: "Something wrong!"
 });
 
+export const setSessionSpaceEmpty = () => ({
+    type: SET_SESSION_SPACE_EMPTY,
+    payLoad: []
+});
+
+export const addTickets = (payload) => ({
+    type: SET_NEW_TICKET,
+    payLoad: payload
+});
+
 export const getSessionSpace = (payload) => {
     return (dispatch) => {
         dispatch(getSessionSpacePending());
-        console.log("URL_SESSION_SPACE+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
-        console.log(URL_SESSION_SPACE+"?session="+payload);
         axios.get(URL_SESSION_SPACE+"?session="+payload)
             .then(({data}) => {
-                console.log(URL_SESSION_SPACE+"?session="+payload);
-                console.log("------------------getSessions-------------------");
-                console.log(data);
                 dispatch(getSessionSpaceResolved(data.space));
 
             })
@@ -114,3 +112,5 @@ export const getSessionSpace = (payload) => {
             })
     };
 };
+
+

@@ -12,9 +12,8 @@ import {
     GET_ROOMS_PENDING,
     GET_SESSION_SPACE_RESOLVED,
     GET_SESSION_SPACE_PENDING,
-    GET_SESSION_SPACE_REJECTED
+    GET_SESSION_SPACE_REJECTED, SET_SESSION_SPACE_EMPTY, SET_NEW_TICKET
 } from "../constants";
-import {store} from "../store";
 
 const INITIAL_DATA = {
     isLoading: false,
@@ -25,7 +24,8 @@ const INITIAL_DATA = {
     errorMsg: "",
     sessions: [],
     rooms: [],
-    sessionSpace: []
+    sessionSpace: [],
+    tickets: []
 };
 
 function genresToState(moviesList) {
@@ -127,6 +127,13 @@ export const movies = (state = INITIAL_DATA, action) => {
                 errorMsg: action.payLoad
             };
         }
+        case SET_SESSION_SPACE_EMPTY: {
+            return {
+                ...state,
+                isLoading: false,
+                sessionSpace: action.payLoad
+            };
+        }
         case GET_SESSION_SPACE_RESOLVED: {
             console.log("action.payLoad  GET_SESSION_SPACE_RESOLVED0000000000000000000000000000000000");
             console.log(action.payLoad);
@@ -157,6 +164,14 @@ export const movies = (state = INITIAL_DATA, action) => {
                 ...state,
                 isLoading: false,
                 rooms: action.payLoad
+            };
+        }
+        case SET_NEW_TICKET: {
+            console.log("action.payLoad  SET_NEW_TICKET ticket ticket ticket");
+            console.log(action.payLoad);
+            return {
+                ...state,
+                tickets: [...state.tickets, action.payLoad]
             };
         }
         default: {

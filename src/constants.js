@@ -18,6 +18,8 @@ export const URL_SESSIONS = "http://subdomain.entony.fs.a-level.com.ua/api/movie
 export const GET_SESSION_SPACE_RESOLVED = "GET_SESSION_SPACE_RESOLVED";
 export const GET_SESSION_SPACE_REJECTED = "GET_SESSION_SPACE_REJECTED";
 export const GET_SESSION_SPACE_PENDING = "GET_SESSION_SPACE_PENDING";
+export const SET_SESSION_SPACE_EMPTY = "SET_SESSION_SPACE_EMPTY";
+export const SET_NEW_TICKET = "SET_NEW_TICKET";
 export const URL_SESSION_SPACE = "http://subdomain.entony.fs.a-level.com.ua/api/movie/space-shadow";
 
 export const GET_ROOMS_RESOLVED = "GET_ROOMS_RESOLVED";

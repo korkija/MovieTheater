@@ -2,7 +2,6 @@ import thunk from "redux-thunk";
 import {createStore, applyMiddleware, combineReducers} from "redux";
 import {movies} from "./reducers/movies";
 import {space} from "./reducers/space";
-import {moviesFilter} from "./reducers/filterMovies"
 
 // Combine Reducers
 const reducers = combineReducers({movies,space});

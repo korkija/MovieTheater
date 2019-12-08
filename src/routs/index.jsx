@@ -1,6 +1,5 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import { ButtonCounter } from "../components/ButtonCounter";//                 ../components/ButtonCounter";
 import { Button } from "../components/Button";
 import {MyMoviesContainer} from "../container/MyMovies";
 import {MyDetailCard} from "../components/DetailCard";

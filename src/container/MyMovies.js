@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {getMovies} from "../actions/movies";
 import {MySmallCard} from "../components/smallCards";
 import {MyFilterMoviesContainer} from "./DropdownMy";
 

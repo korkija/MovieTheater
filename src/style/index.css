@@ -138,11 +138,30 @@ ul.hr li {
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
-.seat{
+.seat10x7{
   float: left;
   width: 44px;
   height: 44px;
   border-radius: 4px;
   margin: 3px;
-  background: chartreuse;
+
+}
+
+.seat14x10{
+  float: left;
+  width: 31px;
+  height: 31px;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.free{
+background: chartreuse;
+}
+
+.taken {
+  background: #888888;
+}
+.choosen-place {
+  background: red ;
 }
