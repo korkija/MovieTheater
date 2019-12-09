@@ -25,9 +25,10 @@ class DetailCard extends React.Component {
                     style={{width: 440}}
                     cover={<img alt={title} src={poster}/>}
                 >
+                    <Link to="/sessions"><button>Посмотреть сеансы</button></Link>
                     <p>{country}</p>
                     <p>{description}</p>
-                    <Link to="/sessions"><button>Посмотреть сеансы</button></Link>
+
                 </Card>
         )
     };

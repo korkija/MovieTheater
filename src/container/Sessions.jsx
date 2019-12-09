@@ -24,9 +24,6 @@ class SessionsMovies extends React.Component {
         else {
             moviesShow=[movies.chooseMovie];
         }
-        console.log("++++++++++++movies++++++++++++++++++++++++++");
-
-        console.log(movies);
         const isLoading = this.props.isLoading;
         return (
             isLoading

@@ -53,7 +53,7 @@ class Modal extends React.Component {
         const checkPlace = movies.sessionSpace.filter((item) => {
             return (item.free);
         });
-        const flagShow = checkPlace.length === 0 ? false : true;
+        const flagShow = checkPlace.length === 0 ? true :  false;
         let message = checkPlace.length === 0 ? "Мест нет!" : "";
         const handleSelectSame = this.handleSelect;
         return ReactDOM.createPortal(
@@ -67,15 +67,15 @@ class Modal extends React.Component {
                             </p>
                         </div>
 
-                        {!flagShow&&(<div className="line-div"><p> {message}</p></div>)}
+                        {flagShow&&(<div className="line-div"><p> {message}</p></div>)}
 
                         {movies.tickets.length!==0&&(<div className="line-div order"><p>забронированно билетов: {movies.tickets.length} </p></div>)}
                         {movies.tickets.length!==0&&(<div className="line-div order"><Link to="/buy"><button>Buy</button></Link></div>)}
 
                         <div className="row-place10x7 ">
                             {movies.sessionSpace.map((item) => (
-                                <div className={item.free ? widthSize + " free" : widthSize + " taken"}
-                                     onClick={item.free && handleSelectSame} data={item._id}
+                                <div className={!item.free ? widthSize + " free" : widthSize + " taken"}
+                                     onClick={!item.free && handleSelectSame} data={item._id}
                                      key={item._id}>{item.place}</div>
                             ))
                             }

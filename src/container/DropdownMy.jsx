@@ -24,13 +24,7 @@ render(){
     const genres=movies.genres;
 
     const handleSearch = (e) => {
-        console.log("buttonchick.textContent                               e");
-        console.log(e);
         this.props.getSecondFilterMovies(e);
-
-        //let buttonchick = document.querySelector(".filter1");
-
-
         };
 
     const handleMenuClick = (e) => {
@@ -50,7 +44,6 @@ render(){
             }
         </Menu>
     );
-
     return (
         <div>
             <div className="find-movies" id="components-dropdown-demo-dropdown-button">
