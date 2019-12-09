@@ -22,8 +22,6 @@ class TicketsList extends React.Component {
         const rooms = movies.rooms;
         const moviesFilm = movies.movies;
         const tickets = movies.tickets;
-        console.log("=============----tickets---------------------=============")
-        console.log(tickets);
         const ticketResultList = tickets.map((item, i) => {
             let fullInfoItem = {...item};
             let sessionInfo = sessions.find(itemSession => itemSession._id === item.session);
@@ -46,8 +44,21 @@ class TicketsList extends React.Component {
     };
     handleBuy = () => {
         if (this.state.movies.tickets.length>0) {
-            alert("this.props.buyTickets()");
-            alert("You WIN!!!");
+            const tickets = this.getFullInfoList();
+            const order = tickets.reduce(( accumulator, currentValue ) => accumulator + currentValue.costs,  0  );
+            let name = document.querySelector(".name");
+            let mail = document.querySelector(".mail");
+            let phone = document.querySelector(".phone");
+            console.log("name.textContent");
+            console.log(name.value);
+            console.log(name);
+            if (name.value!==""&&mail.value!==""&&phone.value!==""){
+            alert("Здесь должен быть запрос в базу данных");
+            alert(`${name.value} ты прорвался! С тебя ${order}`);
+            }
+            else {
+                alert(`еще чуть чуть и Билеты твои!`);
+            }
         }
     };
 
@@ -59,6 +70,15 @@ class TicketsList extends React.Component {
         return (
             <div>
                 {tickets.length!==0&&(<button  onClick={this.handleBuy}>BUY TICKETS</button>)}
+                <div ><b>Name:</b>
+                    <input className="name" type="text" size="30"/>
+                </div>
+                <div ><b>e-mail:</b>
+                    <input className="mail" type="text" size="40"/>
+                </div>
+                <div className="phone"><b>phone:</b>
+                    <input className="phone" type="text" size="40"/>
+                </div>
             {isLoading
                 ? <div>Loading</div>
                 : tickets.map((item, i) => (
