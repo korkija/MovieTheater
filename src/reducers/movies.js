@@ -12,7 +12,7 @@ import {
     GET_ROOMS_PENDING,
     GET_SESSION_SPACE_RESOLVED,
     GET_SESSION_SPACE_PENDING,
-    GET_SESSION_SPACE_REJECTED, SET_SESSION_SPACE_EMPTY, SET_NEW_TICKET
+    GET_SESSION_SPACE_REJECTED, SET_SESSION_SPACE_EMPTY, SET_NEW_TICKET, SET_DELETE_TICKET
 } from "../constants";
 
 const INITIAL_DATA = {
@@ -29,7 +29,7 @@ const INITIAL_DATA = {
 };
 
 function genresToState(moviesList) {
-    let arr = [];
+    let arr = ["Все жанры"];
     for (let i = 0; i < moviesList.length; i++) {
         let generaItem = moviesList[i].genre.map((item) => item.trim());
         arr = [...new Set([...arr, ...generaItem])];
@@ -44,6 +44,7 @@ function chooseMovie(movies) {
     nameMovie = nameMovie ? nameMovie : movies[0].title;
     return movies.find(element => element.title.trim() === nameMovie);
 }
+
 
 export const movies = (state = INITIAL_DATA, action) => {
     switch (action.type) {
@@ -135,8 +136,6 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_SESSION_SPACE_RESOLVED: {
-            console.log("action.payLoad  GET_SESSION_SPACE_RESOLVED0000000000000000000000000000000000");
-            console.log(action.payLoad);
             return {
                 ...state,
                 isLoading: false,
@@ -170,6 +169,19 @@ export const movies = (state = INITIAL_DATA, action) => {
             return {
                 ...state,
                 tickets: [...state.tickets, action.payLoad]
+            };
+        }
+        case SET_DELETE_TICKET: {
+            console.log("=============-------------------------=============action.payLoad");
+            console.log(state.tickets[0]._id);
+            console.log(action.payLoad);
+            console.log(state.tickets.indexOf(  state.tickets.find((item) => item._id===action.payLoad )));
+            return {
+                ...state,
+                tickets: (() => {
+                    state.tickets.splice(state.tickets.indexOf(  state.tickets.find((item) => item._id===action.payLoad )), 1);
+                    return state.tickets
+                })()
             };
         }
         default: {

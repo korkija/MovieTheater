@@ -14,7 +14,7 @@ import {
     GET_SESSION_SPACE_PENDING,
     URL_SESSION_SPACE,
     SET_SESSION_SPACE_EMPTY,
-    SET_NEW_TICKET
+    SET_NEW_TICKET, SET_DELETE_TICKET
 } from "../constants";
 import axios from "axios";
 
@@ -95,6 +95,10 @@ export const setSessionSpaceEmpty = () => ({
 
 export const addTickets = (payload) => ({
     type: SET_NEW_TICKET,
+    payLoad: payload
+});
+export const deleteTickets = (payload) => ({
+    type: SET_DELETE_TICKET,
     payLoad: payload
 });
 

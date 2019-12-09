@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import '../style/index.css';
 import {Menu, Dropdown, Button, Icon} from 'antd';
 import {Input} from 'antd';
-import {getFilterMovies} from "../actions/filterMovies";
+import {getFilterMovies, getSecondFilterMovies} from "../actions/filterMovies";
 import {store} from "../store";
 
 const {Search} = Input;
@@ -19,44 +19,18 @@ class DropdownMy extends React.Component {
         this.props.getFilterMovies(testGenres);
     }
 
-
-    //
-    // const state = store.getState();
-    // const [count, setCount] = useState(0);
-    // //const [genres, setGenres] = useState([]);
-    // const [posts, setPosts] = useState([]);
-    //componentDidMount
-    // useEffect(() => {
-    //     console.log("state.movies");
-    //     console.log(state.movies);
-    //     // setGenre(store.movies.map((item,i)=> {
-    //     //     item.genre;
-    //     // });
-    // }, []);
-    // useEffect(() => {
-    //     fetch("https://jsonplaceholder.typicode.com/posts")
-    //         .then(response => response.json())
-    //         .then(json => setPosts(json));
-    // }, []);
-    //componentDidUpdate
-    // useEffect(() => {
-    //     console.log('1')
-    // });
-
-    // const handleButtonClick = (e) => {
-    //     message.info('Click on left button.');
-    //     console.log('click left button', e);
-    // };
-    //
-    //
-
 render(){
     let {movies,moviesFilter} = store.getState();
     const genres=movies.genres;
 
-    const handleSearch = () => {
-            console.log("movies");
-            console.log(movies);
+    const handleSearch = (e) => {
+        console.log("buttonchick.textContent                               e");
+        console.log(e);
+        this.props.getSecondFilterMovies(e);
+
+        //let buttonchick = document.querySelector(".filter1");
+
+
         };
 
     const handleMenuClick = (e) => {
@@ -64,7 +38,6 @@ render(){
         let buttonchick = document.querySelector(".filter1");
         buttonchick.textContent = genreFilter;
         testGenres=genreFilter;
-        console.log("test!!!!!");
         this.setState({moviesFilter: [1,2,3,4,5]});
     };
     const menu = (
@@ -106,7 +79,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps  = {
-    getFilterMovies
+    getFilterMovies,
+    getSecondFilterMovies
 };
 export const MyFilterMoviesContainer = connect(
     mapStateToProps,

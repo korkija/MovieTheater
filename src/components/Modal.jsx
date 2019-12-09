@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {setSessionSpaceEmpty, addTickets} from "../actions/ChooseMovie";
+import {setSessionSpaceEmpty, addTickets, deleteTickets} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {store} from "../store";
 import {Link} from "react-router-dom";
-import Route from "react-router-dom/es/Route";
 
 class Modal extends React.Component {
 
@@ -30,6 +29,13 @@ class Modal extends React.Component {
             const ticket = movies.sessionSpace.find(item => item._id === event.target.getAttribute("data"));
             this.props.addTickets(ticket);
         }
+        else {
+            if ([].includes.call(chosenOrNot, 'choosen-place')){
+                event.target.classList.remove("choosen-place");
+                this.props.deleteTickets(event.target.getAttribute("data"));
+            }
+        }
+
     };
 
     render() {
@@ -95,7 +101,8 @@ const
 const
     mapDispatchToProps = {
         setSessionSpaceEmpty,
-        addTickets
+        addTickets,
+        deleteTickets
     };
 export const
     MySessionSpace = connect(

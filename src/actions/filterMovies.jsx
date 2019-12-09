@@ -10,10 +10,42 @@ const getFilterMoviesResolved = (payLoad) => ({
     type: GET_MOVIES_FILTER_RESOLVED,
     payLoad});
 
+
+export const getSecondFilterMovies = (genreFilter) => {
+    return (dispatch) => {
+        dispatch(getFilterMoviesPending());
+        let {movies} = store.getState();
+        if (genreFilter) {
+
+            let arrMovies = movies.moviesFilter;
+
+            if (arrMovies.length===0){
+                arrMovies=movies.movies;
+            }
+
+            let results = arrMovies.filter(item => {
+                const srtSmall = item.title.toLowerCase();
+                return srtSmall.indexOf(genreFilter.toLowerCase()) >-1;
+                    });
+            console.log("results----------------------------");
+            console.log(results);
+            dispatch(getFilterMoviesResolved(results));
+        }
+        else {
+            dispatch(getFilterMoviesResolved(movies.movies));
+        }
+
+
+    };
+};
+
 export const getFilterMovies = (genreFilter) => {
     return (dispatch) => {
         dispatch(getFilterMoviesPending());
         let {movies} = store.getState();
+        console.log("genreFilter-------------------------");
+        console.log(genreFilter);
+       // genreFilter = (genreFilter!=="Все жанры")?true:false;
         if (genreFilter) {
             let arrMovies = movies.movies;
             let results = arrMovies.filter(item => {
@@ -24,26 +56,17 @@ export const getFilterMovies = (genreFilter) => {
 
                 return genreFilter === (trash ? trash.trim() : "1");
             });
+            if (results.length!==0){
             dispatch(getFilterMoviesResolved(results));
+            }
+            else {
+                dispatch(getFilterMoviesResolved(movies.movies));
+            }
         }
         else {
             dispatch(getFilterMoviesResolved(movies.movies));
         }
 
 
-        // dispatch(getFilterMoviesPending());
-        // axios.get("URL_MOVIE")
-        //     .then(({data}) => {
-        //         //history.push("/");
-        //         console.log("data.movie");
-        //         console.log(data.movie);
-        //         dispatch(getFilterMoviesResolved(data.movie));
-        //
-        //         //console.log(data.movies.movie);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         dispatch(getFilterMoviesRejected());
-        //     })
     };
 };
