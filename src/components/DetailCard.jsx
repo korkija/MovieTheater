@@ -5,6 +5,7 @@ import {Card} from 'antd';
 
 import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class DetailCard extends React.Component {
 
@@ -26,6 +27,7 @@ class DetailCard extends React.Component {
                 >
                     <p>{country}</p>
                     <p>{description}</p>
+                    <Link to="/sessions"><button>Посмотреть сеансы</button></Link>
                 </Card>
         )
     };

@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {getRooms, getSessions} from "../actions/ChooseMovie";
 import {Card} from "antd";
 import {MySessionShow} from "../components/sessionShow";
+import {store} from "../store";
 
 
 class SessionsMovies extends React.Component {
@@ -15,12 +16,22 @@ class SessionsMovies extends React.Component {
     }
 
     render() {
-        const movies = this.props.movies;
+        let moviesShow;
+        let {movies} = store.getState();
+        if (movies.chooseMovie === {}) {
+            moviesShow = movies.movies;
+        }
+        else {
+            moviesShow=[movies.chooseMovie];
+        }
+        console.log("++++++++++++movies++++++++++++++++++++++++++");
+
+        console.log(movies);
         const isLoading = this.props.isLoading;
         return (
             isLoading
                 ? <div>Loading</div>
-                : movies.map((itemMovie, i) => (
+                : moviesShow.map((itemMovie, i) => (
                     <div key={i}>
                         <div className="sessions_detail">
                             <Card
@@ -49,6 +60,7 @@ const mapStateToProps = (state) => ({
     isLoading: state.isLoading,
     movies: state.movies.movies,
     sessions: state.sessions,
+    chooseMovie: state.chooseMovie,
     rooms: state.rooms,
 });
 const mapDispatchToProps = {

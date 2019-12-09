@@ -39,9 +39,11 @@ function genresToState(moviesList) {
     return arr;
 }
 
-function chooseMovie(movies) {
+function chooseMovieFunc(movies) {
     let nameMovie = decodeURI(window.location.toString()).split("movie/")[1];
     nameMovie = nameMovie ? nameMovie : movies[0].title;
+
+
     return movies.find(element => element.title.trim() === nameMovie);
 }
 
@@ -81,7 +83,7 @@ export const movies = (state = INITIAL_DATA, action) => {
                 movies: action.payLoad,
                 moviesFilter: action.payLoad,
                 genres: genresToState(action.payLoad),
-                chooseMovie: chooseMovie(action.payLoad)
+                chooseMovie: chooseMovieFunc(action.payLoad)
             };
         }
         case GET_MOVIES_REJECTED: {

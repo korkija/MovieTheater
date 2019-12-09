@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {Router} from "react-router-dom";
 import {Layout, Breadcrumb} from 'antd';
 import {createBrowserHistory} from "history";
-import {HeaderMy} from "../components/HeaderMy";
 import {Main} from "../routs/index";
 
 import '../style/App.css';
@@ -11,6 +10,7 @@ import 'antd/dist/antd.css';
 import '../style/index.css';
 import {getMovies} from "../actions/movies";
 import {defaultGetMovies} from "../actions/ChooseMovie";
+import {MyHeaderMy} from "./HeaderMy";
 
 const {Content, Footer} = Layout;
 
@@ -27,7 +27,7 @@ class App extends React.Component {
         return (
                 <Layout>
                     <Router history={history}>
-                    <HeaderMy/>
+                    <MyHeaderMy/>
                     <Content style={{padding: '0 50px', marginTop: 64}}>
 
                         <div style={{background: '#eee', padding: 24, minHeight: 380}}>
