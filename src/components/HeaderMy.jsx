@@ -10,18 +10,19 @@ export class HeaderMy extends Component {
 
     constructor() {
         super();
-        this.activUrl="1";
+        this.activUrl = "1";
     }
+
     componentDidMount() {
         const url = window.location.toString();
-        if (url.indexOf("movie")>-1) {
-            this.activUrl="2";
+        if (url.indexOf("movie") > -1) {
+            this.activUrl = "2";
         }
-        if (url.indexOf("sessions")>-1) {
-            this.activUrl="3";
+        if (url.indexOf("sessions") > -1) {
+            this.activUrl = "3";
         }
-        if (url.indexOf("buy")>-1) {
-            this.activUrl="4";
+        if (url.indexOf("buy") > -1) {
+            this.activUrl = "4";
         }
     }
 
@@ -33,13 +34,15 @@ export class HeaderMy extends Component {
         // defaultSelectedKeys={['1']}
         return (
             <Header>
-                <div className="logo"/>
+                <Link to="/">
+                    <div className="logo"/>
+                </Link>
                 <Menu
                     onSelect={this.handleSelect}
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={this.activUrl}
-                    style={{ lineHeight: '64px' }}
+                    style={{lineHeight: '64px'}}
                 >
                     <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
                     <Menu.Item key="2"><Link to="/movie">Movie</Link></Menu.Item>
