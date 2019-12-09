@@ -28,6 +28,7 @@ export const GET_ROOMS_PENDING = "GET_ROOMS_PENDING";
 export const URL_ROOMS = "http://subdomain.entony.fs.a-level.com.ua/api/movie/room";
 
 export const SET_DELETE_TICKET = "SET_DELETE_TICKET";
+export const SET_DELETE_TICKET_ALL = "SET_DELETE_TICKET_ALL";
 export const GET_MOVIES_SPACE_SHADOW_RESOLVED = "GET_MOVIES_SPACE_SHADOW_RESOLVED";
 export const GET_MOVIES_SPACE_SHADOW_REJECTED = "GET_MOVIES_SPACE_SHADOW_REJECTED";
 export const URL_MOVIE_SPACE_SHADOW = "http://subdomain.entony.fs.a-level.com.ua/api/movie/space-shadow";

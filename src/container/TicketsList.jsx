@@ -4,7 +4,7 @@ import '../style/index.css';
 
 import {connect} from "react-redux";
 import {MyTicket} from "../components/Ticket_Detail"
-import {deleteTickets} from "../actions/ChooseMovie";
+import {deleteTickets, deleteTicketsAll} from "../actions/ChooseMovie";
 import {store} from "../store";
 
 class TicketsList extends React.Component {
@@ -51,8 +51,11 @@ class TicketsList extends React.Component {
             let phone = document.querySelector(".phone");
 
             if (name.value !== "" && mail.value !== "" && phone.value !== "") {
+                this.props.deleteTicketsAll();
                 alert("Здесь должен быть запрос в базу данных");
                 alert(`${name.value} ты прорвался! С тебя ${order}`);
+
+
             } else {
                 alert(`еще чуть чуть и Билеты твои!`);
             }
@@ -107,7 +110,8 @@ const mapStateToProps = (state) => ({
     sessionSpace: state.movies.sessionSpace
 });
 const mapDispatchToProps = {
-    deleteTickets
+    deleteTickets,
+    deleteTicketsAll
 };
 export const MyTicketsList = connect(
     mapStateToProps,

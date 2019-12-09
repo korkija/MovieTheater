@@ -12,7 +12,7 @@ import {
     GET_ROOMS_PENDING,
     GET_SESSION_SPACE_RESOLVED,
     GET_SESSION_SPACE_PENDING,
-    GET_SESSION_SPACE_REJECTED, SET_SESSION_SPACE_EMPTY, SET_NEW_TICKET, SET_DELETE_TICKET
+    GET_SESSION_SPACE_REJECTED, SET_SESSION_SPACE_EMPTY, SET_NEW_TICKET, SET_DELETE_TICKET, SET_DELETE_TICKET_ALL
 } from "../constants";
 
 const INITIAL_DATA = {
@@ -184,6 +184,12 @@ export const movies = (state = INITIAL_DATA, action) => {
                     state.tickets.splice(state.tickets.indexOf(  state.tickets.find((item) => item._id===action.payLoad )), 1);
                     return state.tickets
                 })()
+            };
+        }
+        case SET_DELETE_TICKET_ALL: {
+            return {
+                ...state,
+                tickets: []
             };
         }
         default: {

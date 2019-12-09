@@ -67,7 +67,7 @@ class Modal extends React.Component {
                             </p>
                         </div>
 
-                        {flagShow&&(<div className="line-div"><p> {message}</p></div>)}
+                        {!flagShow&&(<div className="line-div"><p> {message}</p></div>)}
 
                         {movies.tickets.length!==0&&(<div className="line-div order"><p>забронированно билетов: {movies.tickets.length} </p></div>)}
                         {movies.tickets.length!==0&&(<div className="line-div order"><Link to="/buy"><button>Buy</button></Link></div>)}
