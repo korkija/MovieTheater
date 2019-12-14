@@ -12,17 +12,17 @@ const {Search} = Input;
 
 let testGenres;
 class DropdownMy extends React.Component {
-    componentDidMount() {
-        this.props.getFilterMovies(testGenres);
-    }
-    componentWillUpdate() {
-        this.props.getFilterMovies(testGenres);
-    }
+    // componentDidMount() {
+    //     this.props.getFilterMovies(testGenres);
+    // }
+    // componentWillUpdate() {
+    //     this.props.getFilterMovies(testGenres);
+    // }
 
 render(){
-    let {movies,moviesFilter} = store.getState();
-    const genres=movies.genres;
-
+    //let {movies,moviesFilter} = store.getState();
+    const genres=this.props.genres;
+    console.log("MyFilterMoviesContainer");
     const handleSearch = (e) => {
         this.props.getSecondFilterMovies(e);
         };
@@ -32,7 +32,8 @@ render(){
         let buttonchick = document.querySelector(".filter1");
         buttonchick.textContent = genreFilter;
         testGenres=genreFilter;
-        this.setState({moviesFilter: [1,2,3,4,5]});
+        this.props.getFilterMovies(testGenres);
+        //this.setState({moviesFilter: [1,2,3,4,5]});
     };
     const menu = (
         <Menu onClick={handleMenuClick}>
@@ -66,9 +67,8 @@ render(){
 }
 
 const mapStateToProps = (state) => ({
-    errorMsg: state.errorMsg,
-    isLoading: state.isLoading,
-    genres: state.genres
+    //isLoading: state.isLoading,
+    genres: state.movies.genres
 });
 
 const mapDispatchToProps  = {

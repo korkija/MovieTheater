@@ -9,19 +9,17 @@ import {connect} from "react-redux";
 
 const { Meta } = Card;
 
-const SmallCard = (props) => {
+export const SmallCard = (props) => {
         const movie = props.movie;
         const {title, poster} = movie;
+// console.log (props);
 
-        const handleClickAdd = () => {
-            props.checkMoviesOrGetMovies(movie);
-        };
         const newUrl="/movie/"+title;
         return (
             <Link to={newUrl}>
                 <Card
                     hoverable
-                    onClick={handleClickAdd}
+                    onClick={()=>props.onClick(props.movie)}
                     style={{ width: 240 }}
                     cover={<img alt={title} src={poster} />}
                 >
@@ -30,19 +28,18 @@ const SmallCard = (props) => {
             </Link>
         )
 };
-
-const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
-    movies: state.movies,
-    moviesFilter: state.moviesFilter,
-    chooseMovie: state.chooseMovie,
-});
-const mapDispatchToProps = {
-    checkMoviesOrGetMovies
-};
-export const
-    MySmallCard = connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(SmallCard);
+//
+// const mapStateToProps = (state) => ({
+//     // isLoading: state.isLoading,
+//     moviesFilter: state.movies.moviesFilter,
+//     // chooseMovie: state.chooseMovie
+// });
+// const mapDispatchToProps = {
+//     checkMoviesOrGetMovies
+// };
+// export const
+//     MySmallCard = connect(
+//         mapStateToProps,
+//         mapDispatchToProps
+//     )(SmallCard);
 

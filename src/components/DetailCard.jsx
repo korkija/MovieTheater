@@ -3,18 +3,14 @@ import 'antd/dist/antd.css';
 import '../style/index.css';
 import {Card} from 'antd';
 
-import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 class DetailCard extends React.Component {
 
     render() {
-        let {
-            movies,
-        } = this.props;
-        let {title, poster, description, country} = movies.chooseMovie;
-        const isLoading = movies.isLoading;
+        const {title, poster, description, country} = this.props.chooseMovie;
+        const isLoading = this.props.isLoading;
         return (
             isLoading
                 ? <div>Loading</div>
@@ -35,20 +31,13 @@ class DetailCard extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-   // errorMsg: state.errorMsg,
-    isLoading: state.isLoading,
-    movies: state.movies,
-    moviesFilter: state.moviesFilter,
-    chooseMovie: state.chooseMovie,
+    isLoading: state.movies.isLoading,
+    chooseMovie: state.movies.chooseMovie
 });
-const mapDispatchToProps = {
-   // getMovies,
-    checkMoviesOrGetMovies
-};
+
 export const
     MyDetailCard = connect(
         mapStateToProps,
-        mapDispatchToProps
     )(DetailCard);
 
 

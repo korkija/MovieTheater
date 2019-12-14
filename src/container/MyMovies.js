@@ -1,33 +1,32 @@
 import React from "react";
 import {connect} from "react-redux";
-import {MySmallCard} from "../components/smallCards";
+import {SmallCard} from "../components/smallCards";
 import {MyFilterMoviesContainer} from "./DropdownMy";
+import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
 
 class MyMovies extends React.Component {
-    // componentDidMount() {
-    //     this.props.getMovies();
-    // }
 
     render() {
-        let {
-            movies,
-        } = this.props;
-        const isLoading = movies.isLoading;
+        const handleClickAdd = (movieItem) => {
+            console.log("MyMovies test hoe many times   ",movieItem)
+            this.props.checkMoviesOrGetMovies(movieItem);
+        };
+
         return (
             <div>
                 {
-                    isLoading
+                    this.props.isLoading
                         ? <div>Loading</div>
                         : <div>
                             <MyFilterMoviesContainer/>
                         </div>
                 }
                 {
-                    isLoading
+                    this.props.isLoading
                         ? <div>Loading</div>
-                        : movies.moviesFilter.map((item, i) => (
+                        : this.props.moviesFilter.map((item, i) => (
                             <div className="small-card" key={i}>
-                                <MySmallCard movie={item} />
+                                <SmallCard movie={item} onClick={handleClickAdd} />
                             </div>
                         ))
                 }
@@ -36,16 +35,14 @@ class MyMovies extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    errorMsg: state.errorMsg,
-    isLoading: state.isLoading,
-    movies: state.movies,
-    //moviesFilter: state.moviesFilter,
+    isLoading: state.movies.isLoading,
+    moviesFilter: state.movies.moviesFilter,
 });
 
-// const mapDispatchToProps = {
-//     getMovies
-// };
+const mapDispatchToProps = {
+    checkMoviesOrGetMovies
+};
 export const MyMoviesContainer = connect(
     mapStateToProps,
-   // mapDispatchToProps
+    mapDispatchToProps
 )(MyMovies);
