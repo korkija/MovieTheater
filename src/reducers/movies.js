@@ -115,6 +115,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_SESSION_SPACE_PENDING: {
+            console.log("test GET_SESSION_SPACE_PENDING", state.isLoading);
             return {
                 ...state,
                 isLoading: true,
@@ -122,6 +123,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_SESSION_SPACE_REJECTED: {
+            console.log("test GET_SESSION_SPACE_REJECTED");
             return {
                 ...state,
                 isLoading: false,
@@ -129,6 +131,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case SET_SESSION_SPACE_EMPTY: {
+            console.log("test SET_SESSION_SPACE_EMPTY", action.payLoad);
             return {
                 ...state,
                 isLoading: false,
@@ -136,6 +139,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             };
         }
         case GET_SESSION_SPACE_RESOLVED: {
+            console.log("test GET_SESSION_SPACE_RESOLVED ", state.isLoading);
             return {
                 ...state,
                 isLoading: false,

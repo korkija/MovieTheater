@@ -7,6 +7,8 @@ import {Link} from "react-router-dom";
 class Modal extends React.Component {
 
     componentWillMount() {
+
+        console.log("--------------------modal");
         this.root = document.createElement("div");
         const body = document.querySelector("body");
         body.appendChild(this.root);
@@ -45,6 +47,8 @@ class Modal extends React.Component {
         const flagShow = checkPlace.length === 0;
         let message = checkPlace.length === 0 ? "Мест нет!" : "";
         const handleSelectSame = this.handleSelect;
+
+        console.log(this.props.isLoading);
 
         return ReactDOM.createPortal(
             <div>
@@ -85,6 +89,7 @@ class Modal extends React.Component {
 
 const
     mapStateToProps = (state) => ({
+        //isLoading: state.movies.isLoading,
         tickets: state.movies.tickets,
         sessionSpace: state.movies.sessionSpace,
     });

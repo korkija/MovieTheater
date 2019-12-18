@@ -1,28 +1,39 @@
 import React, {useState} from "react";
 import {getSessionSpace} from "../actions/ChooseMovie";
-import {connect} from "react-redux";
+import {connect, useDispatch, useSelector} from "react-redux";
 import {MySessionSpace} from "./Modal";
 
 const SessionsToFilm = (props) => {
 
-    let sessionsToMovie = props.sessions.filter((itemSession) => {
+    const sessions = useSelector(state => state.movies.sessions);
+    const isLoading = useSelector(state => state.movies.isLoading);
+    const dispatch = useDispatch();
+
+    let sessionsToMovie = sessions.filter((itemSession) => {
         return itemSession.movie === props.movie._id;
     });
 
-    const [show, toggleShow] = useState(false);
 
+
+    const [show, toggleShow] = useState(true);
     const handleSelect = e => {
-        props.getSessionSpace(e);
-        toggleShow(true);
+        console.log("props");
+        console.log(props);
+        dispatch(getSessionSpace(e));
+        toggleShow(!show);
     };
     const handlerClickShow = () => {
-        toggleShow(false);
+
+        toggleShow(!show);
     };
+    console.log("show");
+    console.log(show);
+
     return (
         <div>
             {show && <MySessionSpace  title={props.movie.title} handleShow={handlerClickShow}/>}
             {
-                props.isLoading
+                isLoading
                     ? <div>Loading</div>
                     : sessionsToMovie.map((item, i) => (
                         <div className="sessions_detail card" id={item._id} key={i} onClick={() => handleSelect(item._id)} >
@@ -36,10 +47,11 @@ const SessionsToFilm = (props) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-    isLoading: state.movies.isLoading,
-    sessions: state.movies.sessions,
-});
+const mapStateToProps = (state) => {
+    return {
+    // isLoading: state.movies.isLoading,
+    // sessions: state.movies.sessions
+}};
 const mapDispatchToProps = {
     getSessionSpace
 };

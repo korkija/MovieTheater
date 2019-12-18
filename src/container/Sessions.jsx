@@ -16,8 +16,6 @@ class SessionsMovies extends React.Component {
 
     render() {
         let moviesShow;
-        console.log("this.props");
-        console.log(this.props);
         if (this.props.chooseMovie === {}) {
             moviesShow = this.props.movies;
         }
