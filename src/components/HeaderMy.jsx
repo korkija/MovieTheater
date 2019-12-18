@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Layout, Menu} from "antd";
-import {checkMoviesOrGetMovies} from "../actions/ChooseMovie";
-import {connect} from "react-redux";
 
 const {Header} = Layout;
 
@@ -26,19 +24,13 @@ export class HeaderMy extends Component {
         }
     }
 
-    handleSelect = e => {
-        console.log('click', e);
-    };
-
     render() {
-        // defaultSelectedKeys={['1']}
         return (
             <Header>
                 <Link to="/">
                     <div className="logo"/>
                 </Link>
                 <Menu
-                    onSelect={this.handleSelect}
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={this.activUrl}
@@ -53,23 +45,6 @@ export class HeaderMy extends Component {
         )
     }
 }
-
-const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
-    movies: state.movies,
-    moviesFilter: state.moviesFilter,
-    chooseMovie: state.chooseMovie,
-});
-const mapDispatchToProps = {
-    checkMoviesOrGetMovies
-};
-export const
-    MyHeaderMy = connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(HeaderMy);
-
-
 
 
 
