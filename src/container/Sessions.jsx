@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import {getRooms, getSessions} from "../actions/ChooseMovie";
 import {Card} from "antd";
 import {MySessionShow} from "../components/sessionShow";
-import {store} from "../store";
 
 
 class SessionsMovies extends React.Component {
@@ -17,16 +16,16 @@ class SessionsMovies extends React.Component {
 
     render() {
         let moviesShow;
-        let {movies} = store.getState();
-        if (movies.chooseMovie === {}) {
-            moviesShow = movies.movies;
+        console.log("this.props");
+        console.log(this.props);
+        if (this.props.chooseMovie === {}) {
+            moviesShow = this.props.movies;
         }
         else {
-            moviesShow=[movies.chooseMovie];
+            moviesShow=[this.props.chooseMovie];
         }
-        const isLoading = this.props.isLoading;
         return (
-            isLoading
+            this.props.isLoading
                 ? <div>Loading</div>
                 : moviesShow.map((itemMovie, i) => (
                     <div key={i}>
@@ -44,8 +43,6 @@ class SessionsMovies extends React.Component {
                         <div className="sessions_detail">
                             <MySessionShow movie={itemMovie}/>
                         </div>
-
-
                     </div>
                 )
                 )
@@ -54,11 +51,9 @@ class SessionsMovies extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
+    isLoading: state.movies.isLoading,
     movies: state.movies.movies,
-    sessions: state.sessions,
-    chooseMovie: state.chooseMovie,
-    rooms: state.rooms,
+    chooseMovie: state.movies.chooseMovie,
 });
 const mapDispatchToProps = {
     getSessions,
@@ -68,13 +63,3 @@ export const MySessions = connect(
     mapStateToProps,
     mapDispatchToProps
 )(SessionsMovies);
-
-// {sessions.map((itemSession) => (
-//         <div>
-//             if (itemSession.movie===itemMovie._id){
-//             <p>itemSession.date</p>
-//         }
-//         </div>
-//     )
-// )
-// }

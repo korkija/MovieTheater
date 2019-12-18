@@ -10,7 +10,7 @@ import 'antd/dist/antd.css';
 import '../style/index.css';
 import {getMovies} from "../actions/movies";
 import {defaultGetMovies} from "../actions/ChooseMovie";
-import {MyHeaderMy} from "./HeaderMy";
+import {HeaderMy} from "./HeaderMy";
 
 const {Content, Footer} = Layout;
 
@@ -27,7 +27,7 @@ class App extends React.Component {
         return (
                 <Layout>
                     <Router history={history}>
-                    <MyHeaderMy/>
+                    <HeaderMy/>
                     <Content style={{padding: '0 50px', marginTop: 64}}>
 
                         <div style={{background: '#eee', padding: 24, minHeight: 380}}>

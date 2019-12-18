@@ -8,7 +8,6 @@ class MyMovies extends React.Component {
 
     render() {
         const handleClickAdd = (movieItem) => {
-            console.log("MyMovies test hoe many times   ",movieItem)
             this.props.checkMoviesOrGetMovies(movieItem);
         };
 

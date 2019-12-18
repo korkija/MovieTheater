@@ -3,21 +3,15 @@ import {getSessionSpace} from "../actions/ChooseMovie";
 import {connect} from "react-redux";
 import {MySessionSpace} from "./Modal";
 
-
 const SessionsToFilm = (props) => {
-    const movie = props.movie;
-    const {title, _id} = movie;
-    const sessions = props.movies.sessions;
-    const isLoading = props.movies.isLoading;
-    let sessionsToMovie = sessions.filter((itemSession) => {
-        return itemSession.movie === _id;
+
+    let sessionsToMovie = props.sessions.filter((itemSession) => {
+        return itemSession.movie === props.movie._id;
     });
 
     const [show, toggleShow] = useState(false);
-   // const [session, setSession] = useState();
 
     const handleSelect = e => {
-        //setSession(e);
         props.getSessionSpace(e);
         toggleShow(true);
     };
@@ -26,9 +20,9 @@ const SessionsToFilm = (props) => {
     };
     return (
         <div>
-            {show && <MySessionSpace  title={title} handleShow={handlerClickShow}/>}
+            {show && <MySessionSpace  title={props.movie.title} handleShow={handlerClickShow}/>}
             {
-                isLoading
+                props.isLoading
                     ? <div>Loading</div>
                     : sessionsToMovie.map((item, i) => (
                         <div className="sessions_detail card" id={item._id} key={i} onClick={() => handleSelect(item._id)} >
@@ -38,18 +32,13 @@ const SessionsToFilm = (props) => {
                         </div>
                     ))
             }
-
-
         </div>
-
     );
 };
 
 const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
-    movies: state.movies,
-    moviesFilter: state.moviesFilter,
-    chooseMovie: state.chooseMovie,
+    isLoading: state.movies.isLoading,
+    sessions: state.movies.sessions,
 });
 const mapDispatchToProps = {
     getSessionSpace
@@ -59,24 +48,3 @@ export const
         mapStateToProps,
         mapDispatchToProps
     )(SessionsToFilm);
-
-
-// <div>
-// {
-// isLoading
-// ? <div>Loading</div>
-// :{show && <MySessionSpace  title={title} handleShow={handlerClickShow}/>
-// <p>hello</p>
-// {sessionsToMovie.map((item, i) => {
-// <div className="sessions_detail card" id={item._id} key={i} onClick={handleSelect} >
-// <p>цена {item.costs} грн.</p>
-// <p>начало {item.date}</p>
-// <p>зал {item.room}</p>
-// </div>
-// {show && <MySessionSpace data={item._id} title={title} handleShow={handlerClickShow}/>}
-//
-// }
-// )}}
-//
-//
-// </div>

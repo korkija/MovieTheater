@@ -42,8 +42,6 @@ function genresToState(moviesList) {
 function chooseMovieFunc(movies) {
     let nameMovie = decodeURI(window.location.toString()).split("movie/")[1];
     nameMovie = nameMovie ? nameMovie : movies[0].title;
-
-
     return movies.find(element => element.title.trim() === nameMovie);
 }
 

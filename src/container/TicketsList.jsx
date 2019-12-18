@@ -5,29 +5,15 @@ import '../style/index.css';
 import {connect} from "react-redux";
 import {MyTicket} from "../components/Ticket_Detail"
 import {deleteTickets, deleteTicketsAll} from "../actions/ChooseMovie";
-import {store} from "../store";
 
 class TicketsList extends React.Component {
-    state = store.getState();
-
-    componentDidMount() {
-
-
-    }
 
     getFullInfoList() {
-        const state = store.getState();
-        const {movies} = state;
-        const sessions = movies.sessions;
-        const rooms = movies.rooms;
-        const moviesFilm = movies.movies;
-        const tickets = movies.tickets;
-        const ticketResultList = tickets.map((item, i) => {
+        const ticketResultList = this.props.tickets.map((item, i) => {
             let fullInfoItem = {...item};
-            let sessionInfo = sessions.find(itemSession => itemSession._id === item.session);
-            let roomInfo = rooms.find(itemRoom => itemRoom._id === sessionInfo.room);
-            let movieInfo = moviesFilm.find(itemFilm => itemFilm._id === sessionInfo.movie);
-
+            let sessionInfo = this.props.sessions.find(itemSession => itemSession._id === item.session);
+            let roomInfo = this.props.rooms.find(itemRoom => itemRoom._id === sessionInfo.room);
+            let movieInfo = this.props.movies.find(itemFilm => itemFilm._id === sessionInfo.movie);
             fullInfoItem.costs = sessionInfo.costs;
             fullInfoItem.time = sessionInfo.date;
             fullInfoItem.roomID = roomInfo._id;
@@ -43,7 +29,7 @@ class TicketsList extends React.Component {
         this.props.deleteTickets(event.target.getAttribute("data"));
     };
     handleBuy = () => {
-        if (this.state.movies.tickets.length > 0) {
+        if (this.props.tickets.length > 0) {
             const tickets = this.getFullInfoList();
             const order = tickets.reduce((accumulator, currentValue) => accumulator + currentValue.costs, 0);
             let name = document.querySelector(".name");
@@ -54,8 +40,6 @@ class TicketsList extends React.Component {
                 this.props.deleteTicketsAll();
                 alert("Здесь должен быть запрос в базу данных");
                 alert(`${name.value} ты прорвался! С тебя ${order}`);
-
-
             } else {
                 alert(`еще чуть чуть и Билеты твои!`);
             }
@@ -63,10 +47,7 @@ class TicketsList extends React.Component {
     };
 
     render() {
-        const state = store.getState();
-        const {movies} = state;
         const tickets = this.getFullInfoList();
-        const isLoading = movies.isLoading;
         return (
             <div>
                 {tickets.length !== 0 && (
@@ -82,11 +63,11 @@ class TicketsList extends React.Component {
                             <input className="phone" type="text" size="40"/>
                         </div>
                     </div>)}
-                {isLoading
+                {this.props.isLoading
                     ? <div>Loading</div>
                     : tickets.map((item, i) => (
-                            <div>
-                                <div className="line-div" key={i}>
+                            <div key={i}>
+                                <div className="line-div" >
                                     <MyTicket data={item}/>
                                 </div>
                                 <div className="line-div">
@@ -100,14 +81,13 @@ class TicketsList extends React.Component {
     };
 }
 
-
 const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
+    isLoading: state.movies.isLoading,
     movies: state.movies.movies,
     tickets: state.movies.tickets,
     rooms: state.movies.rooms,
-    sessions: state.sessions,
-    sessionSpace: state.movies.sessionSpace
+    sessions: state.movies.sessions,
+    //sessionSpace: state.movies.sessionSpace
 });
 const mapDispatchToProps = {
     deleteTickets,
@@ -117,5 +97,3 @@ export const MyTicketsList = connect(
     mapStateToProps,
     mapDispatchToProps
 )(TicketsList);
-
-
