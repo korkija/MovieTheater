@@ -5,7 +5,7 @@ import '../style/index.css';
 import {connect} from "react-redux";
 import {getRooms, getSessions} from "../actions/ChooseMovie";
 import {Card} from "antd";
-import {MySessionShow} from "../components/sessionShow";
+import {MySessionShow, SessionsToFilm} from "../components/sessionShow";
 
 
 class SessionsMovies extends React.Component {
@@ -39,7 +39,7 @@ class SessionsMovies extends React.Component {
                             </Card>
                         </div>
                         <div className="sessions_detail">
-                            <MySessionShow movie={itemMovie}/>
+                            <SessionsToFilm movie={itemMovie}/>
                         </div>
                     </div>
                 )

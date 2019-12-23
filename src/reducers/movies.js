@@ -17,6 +17,8 @@ import {
 
 const INITIAL_DATA = {
     isLoading: false,
+    isLoadingSessions: false,
+    isLoadingSessionsSpace: false,
     movies: [],
     moviesFilter: [],
     chooseMovie: {},
@@ -94,14 +96,14 @@ export const movies = (state = INITIAL_DATA, action) => {
         case GET_SESSIONS_PENDING: {
             return {
                 ...state,
-                isLoading: true,
+                isLoadingSessions: true,
                 errorMsg: ""
             };
         }
         case GET_SESSIONS_REJECTED: {
             return {
                 ...state,
-                isLoading: false,
+                isLoadingSessions: false,
                 errorMsg: action.payLoad
             };
         }
@@ -110,7 +112,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             // console.log(action.payLoad);
             return {
                 ...state,
-                isLoading: false,
+                isLoadingSessions: false,
                 sessions: action.payLoad
             };
         }
@@ -118,7 +120,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             console.log("test GET_SESSION_SPACE_PENDING", state.isLoading);
             return {
                 ...state,
-                isLoading: true,
+                isLoadingSessionsSpace: true,
                 errorMsg: ""
             };
         }
@@ -126,7 +128,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             console.log("test GET_SESSION_SPACE_REJECTED");
             return {
                 ...state,
-                isLoading: false,
+                isLoadingSessionsSpace: false,
                 errorMsg: action.payLoad
             };
         }
@@ -134,7 +136,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             console.log("test SET_SESSION_SPACE_EMPTY", action.payLoad);
             return {
                 ...state,
-                isLoading: false,
+                isLoadingSessionsSpace: false,
                 sessionSpace: action.payLoad
             };
         }
@@ -142,7 +144,7 @@ export const movies = (state = INITIAL_DATA, action) => {
             console.log("test GET_SESSION_SPACE_RESOLVED ", state.isLoading);
             return {
                 ...state,
-                isLoading: false,
+                isLoadingSessionsSpace: false,
                 sessionSpace: action.payLoad
             };
         }
