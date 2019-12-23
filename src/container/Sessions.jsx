@@ -5,7 +5,7 @@ import '../style/index.css';
 import {connect} from "react-redux";
 import {getRooms, getSessions} from "../actions/ChooseMovie";
 import {Card} from "antd";
-import {MySessionShow, SessionsToFilm} from "../components/sessionShow";
+import {SessionsToFilm} from "../components/sessionShow";
 
 
 class SessionsMovies extends React.Component {

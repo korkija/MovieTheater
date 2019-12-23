@@ -47,9 +47,6 @@ class Modal extends React.Component {
         const flagShow = checkPlace.length === 0;
         let message = checkPlace.length === 0 ? "Мест нет!" : "";
         const handleSelectSame = this.handleSelect;
-
-        console.log(this.props.isLoading);
-
         return ReactDOM.createPortal(
             <div>
                 <div className=" portal-wrapper">
@@ -69,11 +66,12 @@ class Modal extends React.Component {
                         {this.props.tickets.length !== 0 && (<div className="line-div order"><Link to="/buy">
                             <button>Buy</button>
                         </Link></div>)}
-
                         <div className="row-place10x7 ">
                             {this.props.sessionSpace.map((item) => (
                                 !item.free
-                                    ?<div className={widthSize + " free"} onClick={handleSelectSame} data={item._id} key={item._id}>{item.place}</div>
+                                    ?(this.props.tickets.length !== 0)&&(this.props.tickets.find(itemPlace => itemPlace._id === item._id))
+                                    ?<div className={widthSize + " free choosen-place"} onClick={handleSelectSame} data={item._id} key={item._id}>{item.place}</div>
+                                    :<div className={widthSize + " free"} onClick={handleSelectSame} data={item._id} key={item._id}>{item.place}</div>
                                     :<div className={widthSize + " taken"} data={item._id} key={item._id}>{item.place}</div>
                             ))
                             }
@@ -104,3 +102,6 @@ export const
         mapStateToProps,
         mapDispatchToProps
     )(Modal);
+
+
+//
