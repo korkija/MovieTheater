@@ -14,8 +14,6 @@ export const SessionsToFilm = (props) => {
     });
     const [show, toggleShow] = useState(false);
     const handleSelect = e => {
-        console.log("props");
-        console.log(props);
         dispatch(getSessionSpace(e));
         toggleShow(!show);
     };
@@ -23,8 +21,6 @@ export const SessionsToFilm = (props) => {
 
         toggleShow(!show);
     };
-    console.log("show");
-    console.log(show);
 
     return (
         <div>
@@ -43,17 +39,3 @@ export const SessionsToFilm = (props) => {
         </div>
     );
 };
-//
-// const mapStateToProps = (state) => {
-//     return {
-//     // isLoading: state.movies.isLoading,
-//     // sessions: state.movies.sessions
-// }};
-// const mapDispatchToProps = {
-//     getSessionSpace
-// };
-// export const
-//     MySessionShow = connect(
-//         mapStateToProps,
-//         mapDispatchToProps
-//     )(SessionsToFilm);
