@@ -2,21 +2,19 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../style/index.css';
 import {Card} from 'antd';
-
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 
 class DetailCard extends React.Component {
 
     //this.props.history.push
 
-    handleShowSessions=()=>{
+    handleShowSessions = () => {
         console.log("try history");
-        console.log( this.props);
-        console.log( this.props.history);
+        console.log(this.props);
+        console.log(this.props.history);
         //<Link to="/sessions"><button onClick={this.handleShowSessions()}>Посмотреть сеансы</button></Link>
         this.props.history.push("/sessions");
-};
+    };
 
     render() {
         const {title, poster, description, country} = this.props.chooseMovie;

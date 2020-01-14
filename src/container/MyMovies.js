@@ -25,7 +25,7 @@ class MyMovies extends React.Component {
                         ? <div>Loading</div>
                         : this.props.moviesFilter.map((item, i) => (
                             <div className="small-card" key={i}>
-                                <SmallCard movie={item} onClick={handleClickAdd} />
+                                <SmallCard movie={item} onClick={handleClickAdd}/>
                             </div>
                         ))
                 }
