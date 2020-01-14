@@ -2,8 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+Еo start the project go to the folder SRC
 ### `cd src`
+
+In this directory, you can run:
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
