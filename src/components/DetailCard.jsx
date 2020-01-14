@@ -8,6 +8,16 @@ import {Link} from "react-router-dom";
 
 class DetailCard extends React.Component {
 
+    //this.props.history.push
+
+    handleShowSessions=()=>{
+        console.log("try history");
+        console.log( this.props);
+        console.log( this.props.history);
+        //<Link to="/sessions"><button onClick={this.handleShowSessions()}>Посмотреть сеансы</button></Link>
+        this.props.history.push("/sessions");
+};
+
     render() {
         const {title, poster, description, country} = this.props.chooseMovie;
         const isLoading = this.props.isLoading;
@@ -21,7 +31,7 @@ class DetailCard extends React.Component {
                     style={{width: 440}}
                     cover={<img alt={title} src={poster}/>}
                 >
-                    <Link to="/sessions"><button>Посмотреть сеансы</button></Link>
+                    <button onClick={this.handleShowSessions}>Посмотреть сеансы</button>
                     <p>{country}</p>
                     <p>{description}</p>
 
