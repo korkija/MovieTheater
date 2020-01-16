@@ -9,31 +9,35 @@ class DetailCard extends React.Component {
     //this.props.history.push
 
     handleShowSessions = () => {
-        console.log("try history");
-        console.log(this.props);
-        console.log(this.props.history);
         //<Link to="/sessions"><button onClick={this.handleShowSessions()}>Посмотреть сеансы</button></Link>
         this.props.history.push("/sessions");
     };
 
     render() {
-        const {title, poster, description, country} = this.props.chooseMovie;
+        const {title, poster, description, country, trailer} = this.props.chooseMovie;
+        console.log("this.props.chooseMovie");
+        console.log(this.props.chooseMovie);
         const isLoading = this.props.isLoading;
         return (
             isLoading
                 ? <div>Loading</div>
-                : <Card
-                    hoverable
-                    title={title}
+                :
+                <div className="container card">
+                    <h3>{title}</h3>
+                <div className="box">
 
-                    style={{width: 440}}
-                    cover={<img alt={title} src={poster}/>}
-                >
-                    <button onClick={this.handleShowSessions}>Посмотреть сеансы</button>
-                    <p>{country}</p>
-                    <p>{description}</p>
+                    <div className="imgDetail">
+                        <img className="img" alt={title} src={poster}/>
+                    </div>
+                    <div className="infoDetail" >
 
-                </Card>
+                        <p>{country}</p>
+                        <p className="text">{description}</p>
+                        <button onClick={this.handleShowSessions}>Посмотреть сеансы</button>
+                        <iframe width="100%" height="100%" src={trailer} frameBorder="0" allowFullScreen></iframe>
+                    </div>
+                </div>
+                </div>
         )
     };
 }

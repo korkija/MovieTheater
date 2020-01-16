@@ -18,6 +18,7 @@ export const history = createBrowserHistory();
 
 class App extends React.Component {
     componentDidMount() {
+
         this.props.getMovies();
         this.props.defaultGetMovies();
     }

@@ -2,8 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Еo start the project go to the folder SRC
-### `cd src`
 
 In this directory, you can run:
 

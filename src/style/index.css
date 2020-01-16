@@ -1,171 +1,201 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 24px 16px 0;
+    float: left;
 }
 
 Footer {
-  text-align: center ;
+    text-align: center;
 }
 
 Header {
-  position: fixed;
-  z-index: 1;
-  width: 100%
+    position: fixed;
+    z-index: 1;
+    width: 100%
 }
 
 .small-card {
-  display:inline-block;
-  justify-content: center;
-  margin: 16px 24px 16px 0;
+    display: inline-block;
+    justify-content: center;
+    margin: 16px 24px 16px 0;
 }
+
 .find-movies {
-  display:inline-block;
-  vertical-align:bottom;
-
-  /*justify-content: center;*/
-  /*margin: 16px 24px 16px 0;*/
+    display: inline-block;
+    vertical-align: bottom;
 }
 
-.dropdown-my{
-  width: 130px;
-  float: right
+.dropdown-my {
+    width: 130px;
+    float: right
 }
 
-.filter1{
-  float: left
+.filter1 {
+    float: left
 }
 
-.sessions_detail{
-  display:inline-block;
-  vertical-align:bottom;
+.sessions_detail {
+    display: inline-block;
+    vertical-align: bottom;
 }
 
 .card {
-  margin: 10px;
-  border: 2px solid #e0c358;
-  border-radius: 5px;
-  background: #fff;
-  text-align: left;
-  padding: 10px;
-  word-wrap: break-word;
+    margin: 10px;
+    border: 2px solid #e0c358;
+    border-radius: 5px;
+    background: #fff;
+    text-align: left;
+    padding: 10px;
+    word-wrap: break-word;
 
 }
 
 .portal-wrapper {
-  width:100%;
-  height:100%;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  background: rgba(0,0,0, .3);
-  position : fixed;
-  top: 0;
-  left:0
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    left: 0
 }
 
 .modal {
-   width: 600px;
-   height: 500px;
-   background: #ffffff;
- }
+    width: 600px;
+    height: 500px;
+    background: #ffffff;
+}
+
 /* The Modal (background) */
 .modal-wrapper {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
 }
 
 ul.hr {
-  margin: 0; /* Обнуляем значение отступов */
-  padding: 4px; /* Значение полей */
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
 }
+
 ul.hr li {
-  display: inline; /* Отображать как строчный элемент */
-  margin-right: 5px; /* Отступ слева */
-  border: 1px solid #000; /* Рамка вокруг текста */
-  padding: 3px; /* Поля вокруг текста */
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
 }
 
-.row-place10x7{
-  width: 500px;
-  height: 350px;
-  /*display: flex;*/
-  text-align: center;
-  align-items:center;
-  justify-content: center;
-  overflow: hidden;
-  /*position : fixed;*/
-  /*top: 0;*/
-  /*left:0*/
-  /*display:inline-block;*/
-  vertical-align:bottom;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
+.row-place10x7 {
+    width: 500px;
+    height: 350px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    vertical-align: bottom;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
-.seat10x7{
-  float: left;
-  width: 44px;
-  height: 44px;
-  border-radius: 4px;
-  margin: 3px;
+
+.seat10x7 {
+    float: left;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    margin: 3px;
 
 }
 
-.seat14x10{
-  float: left;
-  width: 31px;
-  height: 31px;
-  border-radius: 4px;
-  margin: 2px;
+.seat14x10 {
+    float: left;
+    width: 31px;
+    height: 31px;
+    border-radius: 4px;
+    margin: 2px;
 }
 
-.free{
-background: chartreuse;
+.free {
+    background: chartreuse;
 }
 
 .taken {
-  background: #888888;
+    background: #888888;
 }
+
 .choosen-place {
-  background: red ;
+    background: red;
 }
 
 .line-div {
-  float: left;
+    float: left;
+}
+
+.imgDetail {
+    width: 30%;
+}
+
+.img {
+    width: 100%;
+}
+
+.infoDetail {
+    width: 70%;
+    height: 100%
+}
+
+.text {
+    width: 100%;
+    word-wrap: break-spaces;
+}
+
+.container {
+    /*overflow: hidden;*/
+    width: 100%
+}
+
+.box {
+    /*white-space: nowrap;*/
+}
+
+.box div {
+    vertical-align: top; /* top */
+    display: inline-block;
+    border: 1px solid black
 }

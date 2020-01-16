@@ -11,6 +11,9 @@ class MyMovies extends React.Component {
             this.props.checkMoviesOrGetMovies(movieItem);
         };
 
+        console.log("this.props.moviesFilter");
+        console.log(this.props.moviesFilter);
+
         return (
             <div>
                 {
