@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import '../style/index.css';
-import {Card} from 'antd';
 import {connect} from "react-redux";
 
 class DetailCard extends React.Component {
@@ -15,28 +14,34 @@ class DetailCard extends React.Component {
 
     render() {
         const {title, poster, description, country, trailer} = this.props.chooseMovie;
-        console.log("this.props.chooseMovie");
-        console.log(this.props.chooseMovie);
+        console.log("country");
+        console.log(country);
         const isLoading = this.props.isLoading;
         return (
             isLoading
                 ? <div>Loading</div>
                 :
-                <div className="container card">
-                    <h3>{title}</h3>
-                <div className="box">
-
-                    <div className="imgDetail">
-                        <img className="img" alt={title} src={poster}/>
+                <div className="container ">
+                    <div >
+                        <h3>{title}</h3>
                     </div>
-                    <div className="infoDetail" >
+                    <div className="box">
 
-                        <p>{country}</p>
-                        <p className="text">{description}</p>
-                        <button onClick={this.handleShowSessions}>Посмотреть сеансы</button>
-                        <iframe width="100%" height="100%" src={trailer} frameBorder="0" allowFullScreen></iframe>
+                        <div className="imgDetail">
+                            <img className="img" alt={title} src={poster}/>
+                        </div>
+                        <div className="infoDetail">
+                            <p>
+                           {country.map((item)=>(
+                               `${item} `
+                            ))}</p>
+                            <p className="text">{description}</p>
+                            <button className="buttonTop" onClick={this.handleShowSessions}>Посмотреть сеансы</button>
+                            <div  className="video">
+                                <iframe src={trailer} frameBorder="0" allowFullScreen></iframe>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </div>
         )
     };

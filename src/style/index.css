@@ -58,7 +58,7 @@ Header {
 .card {
     margin: 10px;
     border: 2px solid #e0c358;
-    border-radius: 5px;
+    border-radius: 10px;
     background: #fff;
     text-align: left;
     padding: 10px;
@@ -168,18 +168,41 @@ ul.hr li {
 }
 
 .imgDetail {
-    width: 30%;
+    width: 28%;
+    padding: 5px;
+    margin: 5px;
 }
 
 .img {
     width: 100%;
+border-radius: 10px;
 }
 
 .infoDetail {
     width: 70%;
-    height: 100%
+    /*position: absolute;*/
+    height: 100%;
+    min-height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+    margin: 5px;
 }
 
+
+.video {
+    width: 100%;
+    position: relative;
+    padding-top: 50%;
+}
+.video iframe, .video object, .video embed{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 .text {
     width: 100%;
     word-wrap: break-spaces;
@@ -187,7 +210,8 @@ ul.hr li {
 
 .container {
     /*overflow: hidden;*/
-    width: 100%
+    width: 100%;
+    position: relative;
 }
 
 .box {
@@ -197,5 +221,8 @@ ul.hr li {
 .box div {
     vertical-align: top; /* top */
     display: inline-block;
-    border: 1px solid black
+}
+.buttonTop {
+    vertical-align: top; /* top */
+    margin: 5px;
 }
